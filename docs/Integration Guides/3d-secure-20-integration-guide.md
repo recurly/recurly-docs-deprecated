@@ -17,7 +17,7 @@ While SCA largely involves an integration effort between you and your configured
 
 **Estimated completion time:** 3 hours
 
-### Prerequisites & Limitations
+### Prerequisites & limitations
 
 **Gateway-Specific Requirements**
 
