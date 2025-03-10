@@ -1,5 +1,9 @@
 ---
 title: 3D secure 2.0 integration guide
+excerpt: >-
+  A concise guide to implementing 3D Secure 2.0 for PSD2 compliance. Learn about
+  frictionless, fingerprint, and challenge flows, plus essential setup steps for
+  seamless SCA integration in Recurly.
 deprecated: false
 hidden: false
 metadata:
