@@ -21,9 +21,9 @@ metadata:
 
 This guide is intended to help you understand how to connect your Stripe Elements integration correctly to Recurly via the V3 API.
 
-<div class="alert alert--warning" markdown="1">
-  **The integrator must have a functioning implementation of Stripe Elements in place in order to effectively use this guide. See Stripe Elements documentation and Recurly Recommendations below to get started.**
-</div>
+> 📘 Important:
+>
+> The integrator must have a functioning implementation of Stripe Elements in place in order to effectively use this guide. See Stripe Elements documentation and Recurly Recommendations below to get started.
 
 For more information on the V3 API, see our [Developer Hub](https://recurly.com/developers/api/).
 
