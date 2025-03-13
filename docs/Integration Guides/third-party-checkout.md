@@ -205,9 +205,9 @@ Shipping details, if collected, are also in this response as below:
 }
 ```
 
-<div class="alert alert--danger" markdown="1">
-  A Stripe Confirmation Token will be valid for only **12 hours**. You should retrieve and send the token to Recurly while the customer is still in session. Recurly is unable to make use of Stripe Confirmation Tokens which have expired.
-</div>
+> 📘 Important:
+>
+> A Stripe Confirmation Token will be valid for only **12 hours**. You should retrieve and send the token to Recurly while the customer is still in session. Recurly is unable to make use of Stripe Confirmation Tokens which have expired.
 
 ### Step 3: Create a Purchase Request
 
@@ -258,11 +258,11 @@ After your consumer processes their payment with Cash App, Recurly.js will produ
 
 See [Recurly.js Action Token documentation](https://recurly.com/developers/reference/recurly-js/#3d-secure) at our Developer Hub.
 
-<div class="alert alert--info" markdown="1">
-  **Related APMs:** Cash App and Revolut
-
-  **Please Note:** For Revolut, you must submit the action token to Recurly.js twice, to receive a result token.
-</div>
+> 📘 Important:
+>
+> **Related APMs:** Cash App and Revolut
+>
+> **Please Note:** For Revolut, you must submit the action token to Recurly.js twice, to receive a result token.
 
 ### Step 4: Process the Purchase Response
 
