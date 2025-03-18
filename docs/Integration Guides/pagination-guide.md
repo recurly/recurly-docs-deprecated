@@ -78,12 +78,77 @@ An instance of a `Pager` class is immediately returned when calling any of the `
 
 ## Iterating with pagers
 
-The primary purpose of the `Pager` is to provide a mechanism to automatically iterate over all of the records that are available.\
-The `Pager` will continue to perform requests to Recurly API for more pages of results, as necessary, until the response indicates that there are no more pages available (`has_more` is false).
+The primary purpose of the `Pager` is to provide a mechanism to automatically iterate over all of the records that are available. The `Pager` will continue to perform requests to Recurly API for more pages of results, as necessary, until the response indicates that there are no more pages available (`has_more` is false).
 
-The `limit` parameter will only impact the number of records that are returned in each API page response. The `Pager` will continue to request additional pages until the entire result set has been exhausted.
+> 📘 Important
+>
+> The `limit` parameter will only impact the number of records that are returned in each API page response. The `Pager` will continue to request additional pages until the entire result set has been exhausted.
+>
+> A lower `limit` value might be preferable to reduce request/response times.
 
-A lower `limit` value might be preferable to reduce request/response times.
+```javascript
+const accounts = client.listAccounts({ limit: 200 })
+
+for await (const account of accounts.each()) {
+  console.log(account.code)
+}
+```
+```python
+accounts = client.list_accounts(limit=200).items()
+
+for account in accounts:
+    print(account.code)
+```
+```csharp
+var accounts = client.ListAccounts(limit: 200);
+
+foreach(Account account in accounts)
+{
+    Console.WriteLine(account.Code);
+}
+```
+```ruby
+accounts = @client.list_accounts(limit: 200)
+
+accounts.each do |account|
+  puts account.code
+end
+```
+```java
+QueryParams params = new QueryParams();
+params.setLimit(200);
+Pager<Account> accounts = client.listAccounts(params);
+
+for (Account account : accounts) {
+    System.out.println(account.getCode());
+}
+```
+```php
+$accounts = $client->listAccounts([ 'limit' => 200 ]);
+
+foreach($accounts as $account) {
+    echo $account->getCode() . PHP_EOL;
+}
+```
+```go
+listParams := &recurly.ListAccountsParams{
+	Limit: recurly.Int(200),
+}
+accounts := client.ListAccounts(listParams)
+
+for accounts.HasMore {
+	err := accounts.Fetch()
+	if e, ok := err.(*recurly.Error); ok {
+		fmt.Printf("Failed to retrieve next page: %v", e)
+		break
+	}
+	for _, account := range accounts.Data {
+		fmt.Println(account.Code)
+	}
+}
+```
+
+<br />
 
 ## Total record count
 
