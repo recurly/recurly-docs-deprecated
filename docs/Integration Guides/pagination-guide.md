@@ -91,7 +91,6 @@ The total number of records for a given set of request parameters can be quickly
 
 ```javascript
 
-js
 const beginTime = new Date('January 1, 2020')
 const accounts = await client.listAccounts({
     limit: 200,
