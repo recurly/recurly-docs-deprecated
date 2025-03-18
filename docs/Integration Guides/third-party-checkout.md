@@ -1,5 +1,5 @@
 ---
-title: Third-party checkout
+title: Third-party checkout guide
 deprecated: false
 hidden: false
 metadata:
