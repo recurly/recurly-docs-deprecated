@@ -12,7 +12,7 @@ metadata:
 
 **Multi-item Upload** is a process for bulk-importing items from an external source (like a product database) into the Recurly Item Catalog. This guide shows how to structure your CSV data and use Recurly’s Python client to create items efficiently.
 
-### Prerequisites & Limitations
+### Prerequisites & limitations
 
 * **CSV file** containing item data
 * **Python 3**
@@ -34,7 +34,7 @@ This guide walks you through importing existing items into **Recurly's Item Cata
 
 ***
 
-## Data Preparation
+## Data preparation
 
 Export or compile your item data into a CSV file with these columns:
 
@@ -63,50 +63,57 @@ code4,name4,This is an item but with no default price.,sku4,acc4,true,,,
 
 ***
 
-## Step-by-Step Data Import
+## Step-by-step data import
 
 1. **Install** the Recurly Python client:
-   ```bash
-   pip install --upgrade recurly
-   ```
+
+```bash
+pip install --upgrade recurly
+```
+
 2. **Obtain** your private API key from [Recurly’s API Credentials page](https://app.recurly.com/go/integrations/api_keys).
 3. **Export** your item data into a CSV with the fields shown above.
 4. **Create** a Python client:
-   ```python
-   import recurly
-   api_key = 'your_api_key'
-   client = recurly.Client(api_key)
-   ```
-5. **Iterate** over your CSV and call [Create Item](https://recurly.com/developers/api/latest/index.html#operation/create_item):
-   ```python
-   import csv
-   file = open('items.csv')
-   csv_file = csv.DictReader(file)
 
-   for item in csv_file:
-       currency = item.pop('currency', 'USD')
-       unit_amount = item.pop('default_price', None)
-       if unit_amount is not "":
-           item['currencies'] = [{'currency': currency, 'unit_amount': unit_amount}]
-       try:
-           created_item = client.create_item(item)
-           print("Created Item %s" % created_item)
-       except recurly.ApiError as e:
-           print("Could not create item:", item)
-           print(e)
-   ```
+```python
+import recurly
+api_key = 'your_api_key'
+client = recurly.Client(api_key)
+```
+
+5. **Iterate** over your CSV and call [Create Item](https://recurly.com/developers/api/latest/index.html#operation/create_item):
+
+```python
+import csv
+file = open('items.csv')
+csv_file = csv.DictReader(file)
+
+for item in csv_file:
+    currency = item.pop('currency', 'USD')
+    unit_amount = item.pop('default_price', None)
+    if unit_amount is not "":
+        item['currencies'] = [{'currency': currency, 'unit_amount': unit_amount}]
+    try:
+        created_item = client.create_item(item)
+        print("Created Item %s" % created_item)
+    except recurly.ApiError as e:
+        print("Could not create item:", item)
+        print(e)
+```
+
 6. **Verify** your import:
-   ```python
-   items = client.list_items().items()
-   for i in items:
-       print(i.code)
-   ```
+
+```python
+items = client.list_items().items()
+for i in items:
+    print(i.code)
+```
 
 Check the [Recurly Admin UI](https://app.recurly.com/go/items) to confirm your items appear correctly.
 
 ***
 
-## Complete Upload Script
+## Complete upload script
 
 We’ve included a **full script** [here](/downloads/upload_items.py) for easier batch processing. After downloading, run:
 
