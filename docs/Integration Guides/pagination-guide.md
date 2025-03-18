@@ -49,7 +49,7 @@ Pagination results include metadata in the response to help you manage subsequen
 >
 > If the `sort` parameter is set to `updated_at`, then the `order` should likely be set to `asc` to avoid concurrently updated records from being moved behind the cursor and therefore excluded from the results.
 
-The [API Reference](/developers/api/latest/) documentation will provide detailed information about any additional parameters that a particular `list_*` operation supports.
+The [API Reference](https://recurly.com/developers/api/) documentation will provide detailed information about any additional parameters that a particular `list_*` operation supports.
 
 ## JSON response format
 
