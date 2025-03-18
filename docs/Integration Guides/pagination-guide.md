@@ -148,8 +148,6 @@ for accounts.HasMore {
 }
 ```
 
-<br />
-
 ## Total record count
 
 The total number of records for a given set of request parameters can be quickly determined using the `count` method of the `Pager` without needing to fetch and iterate over the entire result set. This will perform a `HEAD` request to Recurly API and return the `Recurly-Total-Records` header value.
@@ -233,3 +231,169 @@ print("First Account updated since {$beginTime->format('Y-m-d')}: {$account->get
 > 📘 Important
 >
 > The client library will modify the supplied `limit` parameter when performing the request for the `first` record to minimize request/response times. Subsequent use of the same `Pager` instance will use the originally provided `limit` value.
+
+## Getting the first record
+
+If you are only interested in the first record that matches the supplied request parameters, then the `first` method of the `Pager` can be used. If there are no matching records, then a null value will be returned.
+
+```javascript
+const beginTime = new Date('January 1, 2020')
+const accounts = await client.listAccounts({
+    limit: 200,
+    sort: 'updated_at',
+    order: 'asc',
+    beginTime: beginTime
+})
+const account = await accounts.first()
+
+console.log(`First Account updated since ${beginTime}: ${account.code}`)
+```
+```python
+begin_time = datetime(2020, 1, 1, 0, 0, 0)
+accounts = client.list_accounts(
+    limit=200,
+    sort='updated_at',
+    order='asc',
+    begin_time=begin_time
+)
+account = accounts.first()
+
+print(f"First Account updated since {begin_time}: {account.code}")
+```
+```csharp
+var beginTime = new DateTime(2020, 1, 1);
+var accounts = client.ListAccounts(
+    limit: 200,
+    sort: "updated_at",
+    order: "asc",
+    beginTime: beginTime
+);
+var account = accounts.First();
+
+Console.WriteLine($"First Account updated since {beginTime}: {account.Code}");
+```
+```ruby
+begin_time = DateTime.new(2020, 1, 1)
+accounts = @client.list_accounts(
+    limit: 200,
+    sort: 'updated_at',
+    order: 'asc',
+    begin_time: begin_time
+)
+account = accounts.first
+
+puts "First Account updated since #{begin_time}: #{account.code}"
+```
+```java
+DateTime beginTime = new DateTime(2020, 1, 1, 0, 0);
+
+QueryParams params = new QueryParams();
+params.setLimit(200);
+params.setSort("updated_at");
+params.setOrder("asc");
+params.setBeginTime(beginTime);
+Pager<Account> accounts = client.listAccounts(params);
+Account account = accounts.getFirst();
+
+System.out.println("First Account updated since " + beginTime + ": " + account.getCode());
+```
+```php
+$beginTime = new DateTime("2020-01-01 00:00:00");
+$accounts = $client->listAccounts([
+    'limit' => 200,
+    'sort' => 'updated_at',
+    'order' => 'asc',
+    'begin_time' => $beginTime
+]);
+$account = $accounts->getFirst();
+
+print("First Account updated since {$beginTime->format('Y-m-d')}: {$account->getCode()}");
+```
+
+> 📘 Important
+>
+> The client library will modify the supplied `limit` parameter when performing the request for the `first` record to minimize request/response times. Subsequent use of the same `Pager` instance will use the originally provided `limit` value.
+
+## Getting the last record
+
+While there is not an explicity defined `last` method, the equivalent request can be accomplished by changing the `order` parameter of the request when using the `first` method.
+
+If you are only interested in the first record that matches the supplied request parameters, then the `first` method of the `Pager` can be used. If there are no matching records, then a null value will be returned.
+
+```javascript
+const endTime = new Date('January 1, 2020')
+const accounts = await client.listAccounts({
+    limit: 200,
+    sort: 'updated_at',
+    order: 'desc',
+    endTime: endTime
+})
+const account = await accounts.first()
+
+console.log(`Last Account updated before ${endTime}: ${account.code}`)
+```
+```python
+end_time = datetime(2020, 1, 1, 0, 0, 0)
+accounts = client.list_accounts(
+    limit=200,
+    sort='updated_at',
+    order='desc',
+    end_time=end_time
+)
+account = accounts.first()
+
+print(f"Last Account updated before {end_time}: {account.code}")
+```
+```csharp
+var endTime = new DateTime(2020, 1, 1);
+var accounts = client.ListAccounts(
+    limit: 200,
+    sort: "updated_at",
+    order: "desc",
+    endTime: endTime
+);
+var account = accounts.First();
+
+Console.WriteLine($"Last Account updated before {endTime}: {account.Code}");
+```
+```ruby
+end_time = DateTime.new(2020, 1, 1)
+accounts = @client.list_accounts(
+    limit: 200,
+    sort: 'updated_at',
+    order: 'desc',
+    end_time: end_time
+)
+account = accounts.first
+
+puts "Last Account updated before #{end_time}: #{account.code}"
+```
+```java
+DateTime endTime = new DateTime(2020, 1, 1, 0, 0);
+
+QueryParams params = new QueryParams();
+params.setLimit(200);
+params.setSort("updated_at");
+params.setOrder("desc");
+params.setEndTime(endTime);
+Pager<Account> accounts = client.listAccounts(params);
+Account account = accounts.getFirst();
+
+System.out.println("Last Account updated before " + endTime + ": " + account.getCode());
+```
+```php
+$endTime = new DateTime("2020-01-01 00:00:00");
+$accounts = $client->listAccounts([
+    'limit' => 200,
+    'sort' => 'updated_at',
+    'order' => 'desc',
+    'end_time' => $endTime
+]);
+$account = $accounts->getFirst();
+
+print("Last Account updated before {$endTime->format('Y-m-d')}: {$account->getCode()}");
+```
+
+> 📘 Important
+>
+> The client library will adjust the supplied `limit` parameter when performing the request for the `first` record to minimize request/response times. For subsequent requests using the same `Pager` instance, the originally provided `limit` value will be used.
