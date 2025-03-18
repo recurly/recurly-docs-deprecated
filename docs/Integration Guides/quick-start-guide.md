@@ -16,7 +16,7 @@ metadata:
 
 This Quick Start Guide walks you through setting up your Recurly API integration in five steps:
 
-<Cards columns={4}>
+<Cards columns={3}>
   <Card title="Step 1: Obtain your private API key" icon="fa-key">
     Generate your private API key in Recurly’s Admin Dashboard under <em>Integrations > API Keys</em>. You’ll use this key to authenticate all API requests.
   </Card>
