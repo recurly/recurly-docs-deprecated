@@ -1,0 +1,171 @@
+---
+title: Pagination guide
+excerpt: >-
+  A comprehensive guide to managing large data sets with Recurly’s built-in
+  pagination, including request parameters, response formats, and client library
+  pagers for convenient record retrieval.
+deprecated: false
+hidden: false
+metadata:
+  robots: index
+---
+# Overview
+
+### Prerequisites & limitations
+
+* Familiarity with Recurly’s API v3
+* Valid Recurly API credentials
+* Basic knowledge of RESTful APIs and JSON responses
+* Understanding of client library usage (e.g., Python, Ruby, Node.js, etc.)
+
+***
+
+# Definition
+
+**Pagination** in Recurly allows you to efficiently retrieve large sets of records in small “pages.” By iterating over these pages—either manually or via each client library’s built-in **Pager** class—you can avoid performance pitfalls and manage your data flows more effectively.
+
+When your site has thousands of records, fetching all records in a single request becomes inefficient and may negatively impact performance. To address this, the Recurly API provides paginated `list_*` operations, allowing you to retrieve records in manageable chunks across multiple API requests.
+
+## Request parameters
+
+Most `list_*` operations accept the following parameters to control pagination:
+
+* **limit** (optional): Specifies the maximum number of records to return in each response. The default value may vary depending on the endpoint.
+* **order** (optional): Determines the order in which the records are returned, typically sorted by creation date or another relevant field. Valid values are `asc` (ascending) and `desc` (descending).
+* **begin\_time** (optional): Returns only records created after this date. This parameter allows you to filter records by a specific time range.
+* **end\_time** (optional): Returns only records created before this date, enabling further control over the range of data returned.
+* **sort** (optional): Specifies the field by which the results are sorted.
+
+Pagination results include metadata in the response to help you manage subsequent API calls, such as:
+
+* **next**: A URL to retrieve the next set of results.
+* **has\_more**: A boolean value indicating whether more records are available beyond the current page.
+
+> 📘 Important
+>
+> The timestamp specified in the `begin_time` and `end_time` parameters will default to UTC if the value does not contain a time zone.
+>
+> The timestamp `2020-01-01` will be treated as `2020-01-01T00:00:00Z` by Recurly API, which may not match your expectations.
+>
+> If the `sort` parameter is set to `updated_at`, then the `order` should likely be set to `asc` to avoid concurrently updated records from being moved behind the cursor and therefore excluded from the results.
+
+The [API Reference](/developers/api/latest/) documentation will provide detailed information about any additional parameters that a particular `list_*` operation supports.
+
+## JSON response format
+
+Each response from Recurly API will contain the following keys in the JSON object that is returned:
+
+| Key        | Description                                                                          |
+| ---------- | ------------------------------------------------------------------------------------ |
+| `object`   | This will always be the value `list`.                                                |
+| `has_more` | Boolean indicating whether there are more pages of responses.                        |
+| `next`     | The URL to request the next page of results.                                         |
+| `data`     | An array of requested records containing between 0 and `limit` records per-response. |
+
+> 📘 Important
+>
+> The `next` URL will contain all of the query parameters in the original request, as well as a `cursor` parameter that is used to identify the starting point of the next page of results.
+
+## Client library pagers
+
+The client libraries for Recurly API provide a `Pager` class that provides the capability to iterate over all of the records for a given endpoint without the need to manually perform each pagination request.
+
+An instance of a `Pager` class is immediately returned when calling any of the `list_*` methods. A request to Recurly API will only occur when your code begins to iterate over the results or one of the other convenience methods is invoked.
+
+> 📘 Important
+>
+> The client libraries accept the `ids` request parameter as an array of values that will be automatically converted to the comma separated string that Recurly API expects.
+
+## Iterating with pagers
+
+The primary purpose of the `Pager` is to provide a mechanism to automatically iterate over all of the records that are available.\
+The `Pager` will continue to perform requests to Recurly API for more pages of results, as necessary, until the response indicates that there are no more pages available (`has_more` is false).
+
+The `limit` parameter will only impact the number of records that are returned in each API page response. The `Pager` will continue to request additional pages until the entire result set has been exhausted.
+
+A lower `limit` value might be preferable to reduce request/response times.
+
+## Total record count
+
+The total number of records for a given set of request parameters can be quickly determined using the `count` method of the `Pager` without needing to fetch and iterate over the entire result set. This will perform a `HEAD` request to Recurly API and return the `Recurly-Total-Records` header value.
+
+```javascript
+
+js
+const beginTime = new Date('January 1, 2020')
+const accounts = await client.listAccounts({
+    limit: 200,
+    sort: 'updated_at',
+    order: 'asc',
+    beginTime: beginTime
+})
+const account = await accounts.first()
+
+console.log(`First Account updated since ${beginTime}: ${account.code}`)
+
+```
+```python
+var beginTime = new DateTime(2020, 1, 1);
+var accounts = client.ListAccounts(
+    limit: 200,
+    sort: "updated_at",
+    order: "asc",
+    beginTime: beginTime
+);
+var account = accounts.First();
+
+Console.WriteLine($"First Account updated since {beginTime}: {account.Code}");
+```
+```csharp
+var beginTime = new DateTime(2020, 1, 1);
+var accounts = client.ListAccounts(
+    limit: 200,
+    sort: "updated_at",
+    order: "asc",
+    beginTime: beginTime
+);
+var account = accounts.First();
+
+Console.WriteLine($"First Account updated since {beginTime}: {account.Code}");
+```
+```ruby
+begin_time = DateTime.new(2020, 1, 1)
+accounts = @client.list_accounts(
+    limit: 200,
+    sort: 'updated_at',
+    order: 'asc',
+    begin_time: begin_time
+)
+account = accounts.first
+
+puts "First Account updated since #{begin_time}: #{account.code}"
+```
+```java
+DateTime beginTime = new DateTime(2020, 1, 1, 0, 0);
+
+QueryParams params = new QueryParams();
+params.setLimit(200);
+params.setSort("updated_at");
+params.setOrder("asc");
+params.setBeginTime(beginTime);
+Pager<Account> accounts = client.listAccounts(params);
+Account account = accounts.getFirst();
+
+System.out.println("First Account updated since " + beginTime + ": " + account.getCode());
+```
+```php
+$beginTime = new DateTime("2020-01-01 00:00:00");
+$accounts = $client->listAccounts([
+    'limit' => 200,
+    'sort' => 'updated_at',
+    'order' => 'asc',
+    'begin_time' => $beginTime
+]);
+$account = $accounts->getFirst();
+
+print("First Account updated since {$beginTime->format('Y-m-d')}: {$account->getCode()}");
+```
+
+> 📘 Important
+>
+> The client library will modify the supplied `limit` parameter when performing the request for the `first` record to minimize request/response times. Subsequent use of the same `Pager` instance will use the originally provided `limit` value.
