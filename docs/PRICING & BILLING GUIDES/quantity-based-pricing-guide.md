@@ -1,5 +1,10 @@
 ---
 title: Quantity-based pricing guide
+excerpt: >-
+  Learn how to configure quantity-based pricing models (tiered, volume, and
+  stairstep) on Recurly plans using items and add-ons. This guide shows you how
+  to create plans and subscriptions that automatically adjust pricing based on
+  the number of units purchased.
 deprecated: false
 hidden: false
 metadata:
