@@ -867,7 +867,7 @@ System.out.println("Created Usage " + paymentUsage);
 
 ## Step 4: Updating a usage record for each of the usage susbscription add-ons
 
-> *+Note*\*: You can not edit usage from an item that has been deleted.
+> **Note**: You can not edit usage from an item that has been deleted.
 
 Once you have logged a usage record, you can choose to update it later. If it has already been billed, you can only update the `merchant_tag`. Otherwise, you can update any of the fields. In this example, we will assume it has not yet been billed and will only update the `amount`.
 
