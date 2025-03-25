@@ -19,7 +19,7 @@ Usage-based billing lets you charge customers according to their consumption or 
 2. Subscribe customers to those plans, and
 3. Log or update usage records.
 
-Before you begin, read the [Quickstart Guide](/developers/guides/quickstart.html) and [Subscription Management Guide](/developers/guides/manage-subscription.html) for foundational knowledge.
+Before you begin, read the [Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [Subscription Management Guide](/developers/guides/manage-subscription.html) for foundational knowledge.
 
 ### Prerequisites & limitations
 
