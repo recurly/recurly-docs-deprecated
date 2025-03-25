@@ -1,15 +1,30 @@
 ---
 title: Coupons and discounts guide
+excerpt: >-
+  Learn how to create and apply coupons programmatically using Recurly’s API,
+  from single mass-distribution codes to per-account redemptions.
 deprecated: false
 hidden: false
 metadata:
   robots: index
 ---
-## Overview
+# Overview
 
-Everyone loves a good coupon! This guide will walk you through the programmatic process of creating and processing coupons using the Recurly API. You can generate single coupon codes for mass distribution or create many unique coupons for individual delivery and tracking.
+Coupons and discounts are powerful tools to attract new subscribers, nurture loyalty, and boost customer satisfaction. In this guide, you’ll learn how to generate single coupon codes for mass distribution or create unique codes for individual delivery, apply coupons during checkout or directly to customer accounts, and verify coupon usage.
 
-Before continuing, it's recommended to review the [Quickstart Guide](/developers/guides/quickstart.html) and the [Subscription Management Guide](/developers/guides/manage-subscription.html).
+### Prerequisites & Limitations
+
+* Familiarity with [Recurly’s Quickstart Guide](/developers/guides/quickstart.html) and [Subscription Management Guide](/developers/guides/manage-subscription.html)
+* A valid Recurly account and API key
+* Knowledge of RESTful APIs and JSON data structures
+
+***
+
+# Definition
+
+**Coupons and Discounts** refer to the promotions you create and manage in Recurly to provide flexible incentives for your customers—ranging from percentage-based deals to fixed-amount offers. These promotions can be seamlessly integrated into your checkout process or applied directly to customer accounts for ongoing or future billing events.
+
+***
 
 ## Step 1: Coupon creation
 
