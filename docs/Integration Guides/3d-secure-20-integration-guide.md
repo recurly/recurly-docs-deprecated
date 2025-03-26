@@ -97,14 +97,13 @@ Recurly’s SCA solution aims to **simplify complexity** and remain **MPI-agnost
 * **Recurly.js version 4** is required for 3DS2 / SCA. This updated library handles device fingerprinting and challenge flows on the client side, wrapping the lower-level gateway MPI libraries.
 * If you’re not using Recurly.js yet, check out the [Recurly.js reference](https://developers.recurly.com/reference/recurly-js#getting-started).
 
-> **Additional Info:**\
-> [Recurly.js 3-D Secure documentation](https://developers.recurly.com/reference/recurly-js#3d-secure) provides a complete reference on SCA-related methods.
+> **Additional Info:** [Recurly.js 3-D Secure documentation](https://developers.recurly.com/reference/recurly-js#3d-secure) provides a complete reference on SCA-related methods.
 
 ### Recurly API / Client Libraries
 
 * Use **API v2.21 or higher** or **API v3** to ensure compatibility with 3DS2 / SCA.
-* If you’re just getting started, see our [Quickstart Guide](https://developers.recurly.com/guides/quickstart.html).
-* If upgrading from older versions, see our [v3 upgrade guide](https://developers.recurly.com/guides/v3-upgrade-guide.html).
+* If you’re just getting started, see our [Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/).
+* If upgrading from older versions, see our [v3 upgrade guide](https://docs.recurly.com/v1.1/docs/upgrade-to-api-v3#/).
 
 ***
 
