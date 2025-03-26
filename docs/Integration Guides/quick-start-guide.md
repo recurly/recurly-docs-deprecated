@@ -202,9 +202,7 @@ $client = new \Recurly\Client("<your private api key>");
 A plan tells Recurly how often and how much to charge your customers.\
 Plans can be created with free trials, optional products (called add-ons), setup fees, and more.
 
-Plans are typically created in the [admin interface](https://app.recurly.com/go/plans/new)\
-if you only have a few offerings, but you can also create as many plans as you need through
-the [API](/developers/api/latest/index.html#operation/create_plan).
+Plans are typically created in the [admin interface](https://app.recurly.com/go/plans/new) if you only have a few offerings, but you can also create as many plans as you need through the [API](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_plan).
 
 Let's create a hypothetical plan for a monthly coffee delivery product. The customer will\
 be charged $100 a month. It will use the unique identifier "coffee-monthly" to refer to
