@@ -43,7 +43,7 @@ change = @client.create_subscription_change(
 )
 puts "Created subscription change: #{change.id}"
 ```
-```js
+```js Node
 const subscriptionChangeCreate = {
   timeframe: 'now',
   planCode: newPlanCode
@@ -102,7 +102,7 @@ change = @client.create_subscription_change(
 )
 puts "Created subscription change: #{change.id}"
 ```
-```js
+```js Node
 const subscriptionChangeCreate = {
   timeframe: 'term_end',
   unit_amount: 20
@@ -165,7 +165,7 @@ subscription = @client.modify_subscription(
 )
 puts "Postponed Subscription #{subscription.uuid}"
 ```
-```js
+```js Node
 const subscriptionChangeCreate = {
   timeframe: 'term_end',
   next_bill_date: '2025-12-05'
@@ -219,7 +219,7 @@ sub = @client.pause_subscription(
 )
 puts "Paused subscription: #{sub.uuid}"
 ```
-```js
+```js Node
 const subscriptionPause = {
   remaining_pause_cycles: 10
 }
@@ -273,7 +273,7 @@ sub = @client.terminate_subscription(
 )
 puts "Terminated subscription: #{sub.uuid}"
 ```
-```js
+```js Node
 terminateParams = { params: { refund: "none" } }
 const sub = await client.terminateSubscription(subscriptionId, terminateParams)
 console.log('Terminated subscription: ', sub.uuid)
@@ -316,7 +316,7 @@ subscription = @client.cancel_subscription(
 )
 puts "Canceled subscription #{subscription.uuid}"
 ```
-```js
+```js Node
 const subCancel = {
   timeframe: "term_end"
 }
