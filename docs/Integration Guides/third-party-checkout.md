@@ -11,7 +11,7 @@ metadata:
 
 * An existing Stripe account with Stripe Elements enabled.
 * A functional implementation of Stripe Payment Element (or Card Element) is required prior to following this guide.
-* This guide focuses on Recurly’s V3 API. Refer to the [Developer Hub](https://recurly.com/developers/api/) for more details.
+* This guide focuses on Recurly’s V3 API. Refer to the [API Rerefence Hub](https://recurly.com/developers/api/) for more details.
 
 ***
 
@@ -25,7 +25,7 @@ This guide is intended to help you understand how to connect your Stripe Element
 >
 > The integrator must have a functioning implementation of Stripe Elements in place in order to effectively use this guide. See Stripe Elements documentation and Recurly Recommendations below to get started.
 
-For more information on the V3 API, see our [Developer Hub](https://recurly.com/developers/api/).
+For more information on the V3 API, see our [API Reference Hub](https://recurly.com/developers/api/).
 
 ### Supported Payment Methods (Q4 Support)
 
@@ -109,7 +109,7 @@ Recurly does not support Stripe’s External Payment Methods option – if you c
 
 If you would like to add external invoices from a self-hosted integration to Recurly, you may do so using the External Invoices feature.
 
-* [Recurly Docs | External Invoices](https://docs.recurly.com/docs/external-invoices)
+* [Recurly Docs | External Invoices](https://docs.recurly.com/docs/using-app-management#/exports)
 
 If you would like Recurly to support one of these External Payment Methods, please reach out to your Recurly Account manager and submit a feature request.
 
@@ -211,7 +211,7 @@ Shipping details, if collected, are also in this response as below:
 
 ### Step 3: Create a Purchase Request
 
-To make a purchase using the Stripe Confirmation Token, you will provide it in a Recurly V3 API purchase request. In the example below, one subscription is generated using the plan code created in our [Quickstart Guide](https://recurly.com/developers/guides/quickstart.html).
+To make a purchase using the Stripe Confirmation Token, you will provide it in a Recurly V3 API purchase request. In the example below, one subscription is generated using the plan code created in our [Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/).
 
 The following parameters are used specifically for this use-case.
 
