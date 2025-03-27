@@ -12,7 +12,7 @@ metadata:
 ---
 # Overview
 
-This guide demonstrates how to set up **quantity-based pricing** (also known as tiered, volume, or stairstep pricing) for your Recurly plans. You’ll see how to create items, add them to a plan, and subscribe customers with varying quantities. Before getting started, review the [Quickstart Guide](/developers/guides/quickstart.html) and [Subscription Management Guide](/developers/guides/manage-subscription.html) for foundational knowledge.
+This guide demonstrates how to set up **quantity-based pricing** (also known as tiered, volume, or stairstep pricing) for your Recurly plans. You’ll see how to create items, add them to a plan, and subscribe customers with varying quantities. Before getting started, review the [Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [Subscription Management Guide](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/) for foundational knowledge.
 
 ### Prerequisites & limitations
 
@@ -23,7 +23,7 @@ This guide demonstrates how to set up **quantity-based pricing** (also known as 
 
 ## Step 1: Creating an item
 
-In this guide, we'll create an item to use in plans and subscriptions. To do this, we'll use the [Create Item](/developers/api/latest/index.html#operation/create_item) endpoint. When creating items, you can specify various attributes such as the name, accounting codes, external SKU, default pricing, and more. For simplicity, we'll keep things straightforward in this guide (there's no need to define a default price, as it will be overwritten by the pricing models we'll explore below). For more options, refer to the endpoint documentation linked above.
+In this guide, we'll create an item to use in plans and subscriptions. To do this, we'll use the [Create Item](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_item) endpoint. When creating items, you can specify various attributes such as the name, accounting codes, external SKU, default pricing, and more. For simplicity, we'll keep things straightforward in this guide (there's no need to define a default price, as it will be overwritten by the pricing models we'll explore below). For more options, refer to the endpoint documentation linked above.
 
 To give ourselves a concrete example, let's imagine our product is T-shirts. We'll be creating plans to schedule regular deliveries of T-shirts that our customers can distribute at vendor booths or other events. We can create a T-shirt item as follows:
 
@@ -84,7 +84,7 @@ var_dump($item);
 
 ## Step 2: Creating a plan with the item add-on
 
-This guide covers three types of pricing models: `tiered`, `volume`, and `stairstep`. Examples of all three are included below. For more options, refer to the [Plan Creation](/developers/api/latest/index.html#operation/create_plan) endpoint documentation. All quantity-based pricing models adjust prices based on the quantities purchased, though they do so in different ways depending on the [model used](https://recurly.com/billing-models#quantity-based).
+This guide covers three types of pricing models: `tiered`, `volume`, and `stairstep`. Examples of all three are included below. For more options, refer to the [Plan Creation](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_plan) endpoint documentation. All quantity-based pricing models adjust prices based on the quantities purchased, though they do so in different ways depending on the [model used](https://recurly.com/billing-models#quantity-based).
 
 ### Using the tiered pricing model
 
@@ -870,7 +870,7 @@ var_dump($plan);
 
 ### Creating a subscription with the item add-on
 
-Once a plan is created, you can add it to an account as a subscription. For this guide, we assume that an account has already been created, though you can also create an account at this stage. Refer to the [Subscription Create](/developers/api/latest/index.html#operation/create_subscription) endpoint for more information. Any of the plans mentioned above can be used.
+Once a plan is created, you can add it to an account as a subscription. For this guide, we assume that an account has already been created, though you can also create an account at this stage. Refer to the [Subscription Create](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_subscription) endpoint for more information. Any of the plans mentioned above can be used.
 
 ```ruby
 subscription_create = {
