@@ -12,7 +12,7 @@ metadata:
 ---
 # Overview
 
-This guide covers various approaches to **managing existing subscriptions** in Recurly, such as upgrading or downgrading subscription plans, postponing billing, pausing subscriptions, and setting subscriptions to expire. Before proceeding, review our documentation on [Subscription Changes](https://docs.recurly.com/docs/change-subscription), along with the [Quickstart Guide](/developers/guides/quickstart.html) and the [Purchases Guide](/developers/guides/purchases.html).
+This guide covers various approaches to **managing existing subscriptions** in Recurly, such as upgrading or downgrading subscription plans, postponing billing, pausing subscriptions, and setting subscriptions to expire. Before proceeding, review our documentation on [Subscription Changes](https://docs.recurly.com/docs/change-subscription), along with the [Quick-start Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and the [Purchases Guide](https://docs.recurly.com/v1.1/docs/purchases-guide#/).
 
 ### Prerequisites & limitations
 
@@ -27,7 +27,7 @@ This guide covers various approaches to **managing existing subscriptions** in R
 
 Subscription upgrades and downgrades involve modifications to the subscription's plan, quantity, price, or included add-ons.
 
-Use the [Create Subscription Change](/developers/api/latest/index.html#operation/create_subscription_change) endpoint to perform all upgrade and downgrade actions. You can specify when the change should occur: immediately, at the next billing cycle, or at the end of the current subscription term.
+Use the [Create Subscription Change](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_subscription_change) endpoint to perform all upgrade and downgrade actions. You can specify when the change should occur: immediately, at the next billing cycle, or at the end of the current subscription term.
 
 ### Change the subscription plan
 
@@ -148,13 +148,13 @@ echo "Created subscription change: {$change->getId()}" . PHP_EOL;
 
 ## Managing add-ons
 
-For detailed information on managing subscription add-ons, refer to the [Subscription Add-Ons](/developers/guides/manage-subscription-add-ons.html) guide.
+For detailed information on managing subscription add-ons, refer to the [Subscription Add-Ons](https://docs.recurly.com/v1.1/docs/subscription-add-ons-guide#/) guide.
 
 ## Postponing
 
 Subscription postponement involves adjusting your customer's billing cycle, such as changing the next billing date. To learn more about this feature, review the [product documentation](https://docs.recurly.com/docs/postpone-subscription).
 
-To postpone a subscription using the Recurly API, use the [Modify Subscription](/developers/api/latest/index.html#operation/modify_subscription) endpoint. In the example below, we'll modify the start date of the next billing period. This is especially useful if you want to adjust a subscription in a trial period, such as extending or shortening the trial:
+To postpone a subscription using the Recurly API, use the [Modify Subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/modify_subscription) endpoint. In the example below, we'll modify the start date of the next billing period. This is especially useful if you want to adjust a subscription in a trial period, such as extending or shortening the trial:
 
 ```ruby
 subscription = @client.modify_subscription(
@@ -202,13 +202,13 @@ $subscription = $client->modifySubscription($subscription_id, $update_req);
 echo "Postponed subscription: {$change->getUuid()}" . PHP_EOL;
 ```
 
-There are several other modification options available with this endpoint, such as changing the number of remaining billing cycles in the current term or modifying the number of renewal billing cycles. For more details, refer to the [reference documentation](/developers/api/latest/index.html#operation/modify_subscription).
+There are several other modification options available with this endpoint, such as changing the number of remaining billing cycles in the current term or modifying the number of renewal billing cycles. For more details, refer to the [reference documentation](https://recurly.com/developers/api/v2021-02-25/index.html#tag/subscription).
 
 ## Pausing
 
 Pausing a subscription with the Recurly API is simple and offers your customers an alternative to outright cancellation. For more details on this feature, refer to our [product documentation](https://docs.recurly.com/docs/pause-subscription).
 
-To pause a subscription, use the [Pause Subscription](/developers/api/latest/index.html#operation/pause_subscription) endpoint. This allows you to freeze billing for a specified number of cycles at the next renewal date. In the example below, we pause a subscription for ten billing cycles:
+To pause a subscription, use the [Pause Subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/pause_subscription) endpoint. This allows you to freeze billing for a specified number of cycles at the next renewal date. In the example below, we pause a subscription for ten billing cycles:
 
 ```ruby
 sub = @client.pause_subscription(
@@ -264,7 +264,7 @@ A subscription can be marked as expired either through **cancellation** (e.g., t
 
 ### Termination
 
-To terminate a subscription, use the [Terminate Subscription](/developers/api/latest/index.html#operation/terminate_subscription) endpoint and pass in the ID of the subscription to terminate. You can also specify a type of refund: `full`, `partial`, or `none`. In the example below, we'll terminate a subscription and provide a partial refund to the customer:
+To terminate a subscription, use the [Terminate Subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/terminate_subscription) endpoint and pass in the ID of the subscription to terminate. You can also specify a type of refund: `full`, `partial`, or `none`. In the example below, we'll terminate a subscription and provide a partial refund to the customer:
 
 ```ruby
 sub = @client.terminate_subscription(
@@ -305,7 +305,7 @@ echo "Terminated subscription: {$sub->getUuid()}" . PHP_EOL;
 
 ### Cancellation
 
-To cancel a subscription, use the [Cancel Subscription](/developers/api/latest/index.html#operation/cancel_subscription) endpoint. Similar to termination, you'll specify the ID of the subscription to cancel. Additionally, you'll need to specify whether the subscription should end at the next billing date or at the end of the term. In the example below, we'll cancel a subscription at the end of the term:
+To cancel a subscription, use the [Cancel Subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/cancel_subscription) endpoint. Similar to termination, you'll specify the ID of the subscription to cancel. Additionally, you'll need to specify whether the subscription should end at the next billing date or at the end of the term. In the example below, we'll cancel a subscription at the end of the term:
 
 ```ruby
 subscription = @client.cancel_subscription(
@@ -353,8 +353,4 @@ $subscription = $client->cancelSubscription($subscription_id, $sub_cancel);
 echo "Canceled subscription: {$change->getUuid()}" . PHP_EOL;
 ```
 
-At the end of the specified timeframe, the subscription will move to an expired state. However, you can reactivate the subscription before that time using the [Reactivate Subscription](/developers/api/latest/index.html#operation/reactivate_subscription) endpoint, which will restore the subscription to its previous state. This is useful if your customer changes their mind and wants to continue with the service.
-
-## Next steps
-
-The examples presented in this guide are just the beginning when it comes to managing subscriptions via the Recurly API. For more details, explore the full [reference documentation](/developers/api/latest/index.html), and don't hesitate to reach out to our [support team](https://support.recurly.com) if you need assistance.
+At the end of the specified timeframe, the subscription will move to an expired state. However, you can reactivate the subscription before that time using the [Reactivate Subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/reactivate_subscription) endpoint, which will restore the subscription to its previous state. This is useful if your customer changes their mind and wants to continue with the service.
