@@ -1,5 +1,5 @@
 ---
-title: Managing subscription methods guide
+title: Subscription management guide
 excerpt: >-
   Learn how to modify existing Recurly subscriptions through upgrades,
   downgrades, postponements, pauses, expirations, and more. This guide shows you
