@@ -19,7 +19,7 @@ Usage-based billing lets you charge customers according to their consumption or 
 2. Subscribe customers to those plans, and
 3. Log or update usage records.
 
-Before you begin, read the [Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [Subscription Management Guide](/developers/guides/manage-subscription.html) for foundational knowledge.
+Before you begin, read the [Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [Subscription Management Guide](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/) for foundational knowledge.
 
 ### Prerequisites & limitations
 
@@ -34,7 +34,7 @@ Before you begin, read the [Quickstart Guide](https://docs.recurly.com/v1.1/docs
 
 ## Step 1: Creating a plan with usage plan add-ons
 
-In this guide, we’ll create a plan add-on that supports subscriptions and usage logging. To set this up, we’ll use the [Create an add-on](/developers/api/latest/index.html#operation/create_plan_add_on) endpoint. When creating a usage plan add-on, you can choose to charge by a percentage of usage logged, a unit amount per usage logged, or a [quantity based pricing model](https://docs.recurly.com/docs/billing-models#section-quantity-based). In this guide, we’ll create two plans, each with its own usage add-on—one using usage percentage and another with quantity based pricing.\
+In this guide, we’ll create a plan add-on that supports subscriptions and usage logging. To set this up, we’ll use the [Create an add-on](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_plan_add_on) endpoint. When creating a usage plan add-on, you can choose to charge by a percentage of usage logged, a unit amount per usage logged, or a [quantity based pricing model](https://docs.recurly.com/docs/billing-models#section-quantity-based). In this guide, we’ll create two plans, each with its own usage add-on—one using usage percentage and another with quantity based pricing.\
 There are three quantity based pricing models available: `tiered`, `volume`, and `stairstep`. In this guide, we’ll use the `tiered` model. For more information, please see our [quantity based pricing models](https://recurly.com/billing-models#quantity-based) documentation.
 
 To illustrate this, we’ll imagine scenarios for each usage add-on. In the quantity based pricing example, we’ll create a usage add-on for a video streaming platform that includes 100 GB of data for free, with charges applied to any overage using a `tiered` pricing model.
@@ -43,7 +43,7 @@ In the tiered pricing model, each unit is charged based on its tier. For the exa
 
 For the percentage usage example, we’ll create a usage add-on for a payments company that charges 1% of each merchant's monthly Total Payment Volume.
 
-Each usage plan add-on will use a different [measured unit](https://docs.recurly.com/docs/usage-based-billing#section-measured-units), created via the admin console or API using the [Create a measured unit](/developers/api/latest/index.html#operation/create_measured_unit) endpoint. In our examples, the tiered pricing add-on will use GB as the measured unit, while the percentage add-on will use Total Payment Volume. We can create a plan with these add-ons as follows:
+Each usage plan add-on will use a different [measured unit](https://docs.recurly.com/docs/usage-based-billing#section-measured-units), created via the admin console or API using the [Create a measured unit](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_measured_unit) endpoint. In our examples, the tiered pricing add-on will use GB as the measured unit, while the percentage add-on will use Total Payment Volume. We can create a plan with these add-ons as follows:
 
 ```ruby
 streaming_plan_create = {
@@ -493,7 +493,7 @@ System.out.println("Created Payments Plan " + paymentsPlan);
 
 ## Step 2: Creating a subscription with the usage plan add-ons
 
-After creating a plan, you can add it to an account as a subscription. For this guide, we assume an account has already been created. However, if needed, you can create an account at this stage as well; see the [Subscription Create](/developers/api/latest/index.html#operation/create_subscription) endpoint for details. We’ll now create a subscription that includes both usage add-ons from the previous step.
+After creating a plan, you can add it to an account as a subscription. For this guide, we assume an account has already been created. However, if needed, you can create an account at this stage as well; see the [Create Subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_subscription) endpoint for details. We’ll now create a subscription that includes both usage add-ons from the previous step.
 
 ```ruby
 streaming_subscription_create = {
@@ -709,9 +709,9 @@ System.out.println("Created Payment Subscription " + paymentSubscription);
 
 ## Step 3: Logging usage for each usage subscription add-on
 
-After creating a subscription with a usage add-on, you can [log usage](/developers/api/latest/index.html#operation/create_usage) for it. Usage records can be logged in real-time or aggregated into hourly or daily records, depending on what best suits your systems. The closer to real-time you log usage, the cleaner and more accurate your invoices will appear.
+After creating a subscription with a usage add-on, you can [log usage](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_usage) endpoint for it. Usage records can be logged in real-time or aggregated into hourly or daily records, depending on what best suits your systems. The closer to real-time you log usage, the cleaner and more accurate your invoices will appear.
 
-The `usage_timestamp` marks when the usage applies, while the `recording_timestamp` reflects when the usage was recorded in your system. For more details, refer to the [documentation](/developers/api/latest/index.html#operation/create_usage). In this example, we’ll omit both the `usage_timestamp` and `recording_timestamp`, which will default to the current time.
+The `usage_timestamp` marks when the usage applies, while the `recording_timestamp` reflects when the usage was recorded in your system. For more details, refer to the [endpoint](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_usage). In this example, we’ll omit both the `usage_timestamp` and `recording_timestamp`, which will default to the current time.
 
 > For reference:
 >
