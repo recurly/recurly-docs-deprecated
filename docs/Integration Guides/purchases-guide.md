@@ -16,7 +16,7 @@ This guide shows you how to use the [Purchase endpoint](https://developers.recur
 ### Prerequisites & limitations
 
 * Familiarity with Recurly’s API and basic REST concepts
-* [Completed the Quickstart Guide](https://developers.recurly.com/guides/quickstart.html)
+* [Completed the Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/)
 * Optional usage of [Recurly.js](https://developers.recurly.com/reference/recurly-js) to reduce PCI compliance scope
 
 ***
@@ -177,4 +177,4 @@ After a successful purchase, you can confirm the details via the Recurly Admin U
 
 ## Next steps
 
-Now that you can create new [accounts](https://app.recurly.com/go/accounts), [subscriptions](https://app.recurly.com/go/subscriptions), and one-time payments, explore the [Subscription Management](https://developers.recurly.com/guides/manage-subscription.html) guide to learn how to modify subscriptions after the initial purchase.
+Now that you can create new [accounts](https://app.recurly.com/go/accounts), [subscriptions](https://app.recurly.com/go/subscriptions), and one-time payments, explore the [Subscription Management](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/) guide to learn how to modify subscriptions after the initial purchase.
