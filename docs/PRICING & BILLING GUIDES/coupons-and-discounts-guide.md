@@ -14,7 +14,7 @@ Coupons and discounts are powerful tools to attract new subscribers, nurture loy
 
 ### Prerequisites & Limitations
 
-* Familiarity with [Recurly’s Quickstart Guide](/developers/guides/quickstart.html) and [Subscription Management Guide](/developers/guides/manage-subscription.html)
+* Familiarity with [Recurly’s Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [Subscription Management Guide](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/)
 * A valid Recurly account and API key
 * Knowledge of RESTful APIs and JSON data structures
 
@@ -30,7 +30,7 @@ Coupons and discounts are powerful tools to attract new subscribers, nurture loy
 
 ### Create a single coupon for mass distribution
 
-Use the [Create Coupon](/developers/api/latest/index.html#operation/create_coupon) endpoint to create a single coupon code for mass distribution to many customers. This endpoint allows you to specify various properties, such as:
+Use the [Create Coupon](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_coupon_redemption) endpoint to create a single coupon code for mass distribution to many customers. This endpoint allows you to specify various properties, such as:
 
 * **Name:** For internal tracking.
 * **Maximum Redemptions:** Limits the number of redemptions overall or per customer account.
@@ -109,7 +109,7 @@ var createCouponReq = new CouponCreate()
 Coupon coupon = client.CreateCoupon(createCouponReq);
 ```
 
-However, these are only a few of the coupon configurability options available. For more information, refer to the [reference documentation](/developers/api/latest/index.html#operation/create_coupon).
+However, these are only a few of the coupon configurability options available. For more information, refer to the [reference documentation](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_coupon).
 
 ## Step 2: Coupon redemption
 
@@ -117,7 +117,7 @@ Customers can apply coupons to an initial purchase or to their account. When app
 
 ### Redeem with purchase
 
-To redeem one or more coupons as part of a new purchase, use the [Create Purchase](/developers/api/latest/index.html#operation/create_purchase) endpoint and pass in a list of coupon codes to be applied.
+To redeem one or more coupons as part of a new purchase, use the [Create Purchase](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_purchase) endpoint and pass in a list of coupon codes to be applied.
 
 ```ruby
 purchase = {
@@ -228,7 +228,7 @@ InvoiceCollection collection = client.CreatePurchase(purchaseReq);
 
 ### Apply a coupon to an account
 
-To apply a coupon to a customer account, use the [Create Coupon Redemption](/developers/api/latest/index.html#operation/create_coupon_redemption) endpoint. Provide the ID of the coupon to be redeemed along with the associated currency.
+To apply a coupon to a customer account, use the [Create Coupon Redemption](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_coupon_redemption) endpoint. Provide the ID of the coupon to be redeemed along with the associated currency.
 
 > **Note:** that the `coupon_id` parameter can use either the primary key of the coupon or the `code-` prefix to identify the coupon. For example, the `coupon_id` for a coupon with the code `discount123` would be `code-discount123`.
 
@@ -273,7 +273,7 @@ CouponRedemption coupon = client.CreateCouponRedemption(accountId, couponRedempt
 
 You can use the API at any time to:
 
-* Lookup a [specific coupon by ID](/developers/api/latest/index.html#operation/get_coupon).
-* Obtain a [list of all coupons](/developers/api/latest/index.html#operation/list_coupons) created for your Recurly site/subdomain.
-* Show [coupon redemptions](/developers/api/latest/index.html#operation/list_account_coupon_redemptions) for a specific account.
-* Explore many [more options](/developers/api/latest/index.html#tag/coupon).
+* Lookup a [specific coupon by ID](https://recurly.com/developers/api/v2021-02-25/index.html#operation/get_coupon).
+* Obtain a [list of all coupons](https://recurly.com/developers/api/v2021-02-25/index.html#operation/list_coupons) created for your Recurly site/subdomain.
+* Show [coupon redemptions](https://recurly.com/developers/api/v2021-02-25/index.html#operation/list_account_coupon_redemptions) for a specific account.
+* Explore many [more options](https://recurly.com/developers/api/v2021-02-25/index.html#tag/coupon).
