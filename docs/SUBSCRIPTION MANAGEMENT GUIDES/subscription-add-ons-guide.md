@@ -11,8 +11,9 @@ metadata:
 ---
 # Overview
 
-This guide demonstrates how to **manage Subscription Add-Ons** using Recurly’s API. You’ll learn to attach new Add-Ons, modify existing ones, and remove unneeded Add-Ons – all via the [Create Subscription Change](/developers/api/latest/index.html#operation/create_subscription_change) endpoint.\
-These examples build on the [Subscription Management Guide](/developers/guides/manage-subscription.html) and [Purchases Guide](/developers/guides/purchases.html), and it’s recommended to review our product documentation on [Subscription Changes](https://docs.recurly.com/docs/change-subscription) before proceeding.
+This guide demonstrates how to **manage Subscription Add-Ons** using Recurly’s API. You’ll learn to attach new Add-Ons, modify existing ones, and remove unneeded Add-Ons – all via the [Create Subscription Change](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_subscription_change) endpoint.
+
+These examples build on the [Subscription Management Guide](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/) and [Purchases Guide](https://docs.recurly.com/v1.1/docs/purchases-guide#/), and it’s recommended to review our product documentation on [Subscription Changes](https://docs.recurly.com/docs/change-subscription) before proceeding.
 
 ### Prerequisites & limitations
 
@@ -20,8 +21,6 @@ These examples build on the [Subscription Management Guide](/developers/guides/m
 * Familiarity with Recurly’s API endpoints for subscriptions and plan add-ons.
 * Understanding of how plan-level Add-Ons differ from Subscription Add-Ons.
 * Knowledge of JSON request/response formats.
-
-<br />
 
 ## Scenario Setup
 
@@ -37,9 +36,10 @@ There are 4 Add-Ons that can be included with the Plan when creating the Subscri
 
 ## Managing Subscription Add-Ons
 
-The [Create Subscription Change](/developers/api/latest/index.html#operation/create_subscription_change) endpoint can be used to add, remove, and modify the Subscription's Add-Ons. Add-Ons are managed via the `add_ons` section of the request body. Each object defined in the `add_ons` array must include either an `id` or a `code` at the minimum.
+The [Create Subscription Change](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_subscription_change) endpoint can be used to add, remove, and modify the Subscription's Add-Ons. Add-Ons are managed via the `add_ons` section of the request body. Each object defined in the `add_ons` array must include either an `id` or a `code` at the minimum.
 
-> **Note**: Special care should be taken when providing a value for the `add_ons` field. All existing Add-Ons must be included or else they will be removed.\
+> **Note**: Special care should be taken when providing a value for the `add_ons` field. All existing Add-Ons must be included or else they will be removed.
+>
 > Additionally, in Recurly API `v2019-10-10`, exlcuding the `add_ons` section of the request body is equivalent of specifying an empty array. As such, failing to include `add_ons` will remove all Add-Ons from the Subscription.
 
 The attributes of a Subscription Add-On (quantity, unit\_amount, tiers, and revenue\_schedule\_type) can be modified without impacting the original Plan Add-On. Likewise, a Plan Add-On can be updated after the creation of a Subscription Add-On and the existing Subscription Add-On will not be affected.
@@ -51,7 +51,7 @@ The attributes of a Subscription Add-On (quantity, unit\_amount, tiers, and reve
 
 Supplying both the `id` and `code` in the request will be treated as if only the `id` were passed.
 
-## Attach New Add-Ons
+## Attach new add-ns
 
 New Add-Ons can be attached to the Subscription by providing a Plan Add-On `code`. Additional customizations of the Plan Add-On attributes can also be supplied at the same time.
 
@@ -176,11 +176,11 @@ echo "Created subscription change: {$change->getId()}" . PHP_EOL;
 ]
 ```
 
-## Modify Existing Add-Ons
+## Modify existing add-ons
 
 There are two strategies that can be employed when updating an existing Subscription Add-On:
 
-### Passing The Subscription Add-On Id
+### Passing the subscription add-on Id
 
 If the Subscription Add-On's `id` is provided in the request, Recurly API will update the existing Subscription Add-On with the provided updates.
 
@@ -298,11 +298,13 @@ echo "Created subscription change: {$change->getId()}" . PHP_EOL;
 
 > **Note**: Remember that we **must** include the other three Subscription Add-Ons to avoid deleting them.
 
-### Passing The Plan Add-On Code
+### Passing the plan add-on code
 
-If the Plan Add-On's `code` is passed, Recurly API will effectively reset the existing Subscription Add-On's attributes to those of the Plan Add-On. Any additional attributes supplied along with the `code` will be applied to the new Subscription Add-On.\
-**Note**: If the Plan Add-On has been updated since the original Subscription Add-On was created, then the Subscription Add-On will be updated to the attributes of the current Plan Add-On.
-In the below examples, we will be adjusting the `quantity` of the fourth Subscription Add-On which is based on the Plan Add-On with code, `premium-content`.
+If the Plan Add-On's `code` is passed, Recurly API will effectively reset the existing Subscription Add-On's attributes to those of the Plan Add-On. Any additional attributes supplied along with the `code` will be applied to the new Subscription Add-On.
+
+> **Note**: If the Plan Add-On has been updated since the original Subscription Add-On was created, then the Subscription Add-On will be updated to the attributes of the current Plan Add-On.
+>
+> In the below examples, we will be adjusting the `quantity` of the fourth Subscription Add-On which is based on the Plan Add-On with code, `premium-content`.
 
 ```ruby
 change = @client.create_subscription_change(
@@ -414,7 +416,7 @@ echo "Created subscription change: {$change->getId()}" . PHP_EOL;
 
 > **Note**: Remember that we **must** include the other three Subscription Add-Ons to avoid deleting them.
 
-## Removing Add-Ons
+## Removing add-ons
 
 An Add-On can be removed from a Subscription by both including the `add_ons` array in the Create Subscription Change request and excluding the Subscription Add-On `id`/Plan Add-On `code`.\
 In the below examples, we will be removing the first Subscription Add-On, `n1d523w2ekth`.
@@ -516,7 +518,7 @@ echo "Created subscription change: {$change->getId()}" . PHP_EOL;
 
 > **Note**: Remember that we **must** include the other three Subscription Add-Ons to avoid deleting them.
 
-### Adding, Modifying by Id, Modifying by Code, and Removing Add-Ons
+### Adding, modifying by Id, modifying by code, and removing add-ons
 
 All of the above operations can be consolidated into a single request. There is no restriction that each action be done in it's own request.
 
