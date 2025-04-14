@@ -13,7 +13,7 @@ metadata:
 
 This guide helps you transition from Recurly API version 2 to version 3. It covers crucial differences in how v3 handles authentication, data formats, and client library design, ensuring a smoother, more transparent integration.
 
-### Prerequisites & Limitations
+### Prerequisites & limitations
 
 * Familiarity with Recurly API v2 and your current integration
 * Basic understanding of RESTful APIs and JSON
