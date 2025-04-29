@@ -1,7 +1,7 @@
 - overview-webhooks
 - best-practices
-- lifecycle-events
 - configuration-and-security
 - webhook-details
 - webhooks-states
 - automatic-retries
+- lifecycle-events
