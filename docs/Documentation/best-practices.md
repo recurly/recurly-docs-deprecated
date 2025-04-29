@@ -46,16 +46,8 @@ Recurly webhooks may be retried or sent multiple times if delivery is considered
 * Accept the same notification more than once.
 * Tolerate events that arrive in the wrong order.
 
-\<Cards columns=\{1}>\
-\<Card title="Example" href="[https://readme.com](https://readme.com)" icon="fa-home">
-An account is closed and a webhook is sent. Delivery fails, so Recurly schedules a retry.\
-Before the retry succeeds, the customer reopens the account, generating a second webhook.
-When your endpoint comes back online, it might receive the *closed* notification **after** the *reopened* one. **Always** verify the current account status via the API before acting on the webhook payload.  \</Card>
-\</Cards>
-
-\<Cards columns=\{1}>
-&#x20; \<Card title="Example" icon="fa-home">
-An account is closed and a webhook is sent. Delivery fails, so Recurly schedules a retry.\\\\\\
-Before the retry succeeds, the customer reopens the account, generating a second webhook.
-When your endpoint comes back online, it might receive the \*closed\* notification \*\*after\*\* the \*reopened\* one. \*\*Always\*\* verify the current account status via the API before acting on the webhook payload.\</Card>
-\</Cards>
+<Cards columns={1}>
+  <Card title="Example" icon="fa-info-circle">
+    For example, an account can close and we will send a notification for this. If delivery fails, the notification will be sent again later. In the meantime, the account could reopen (triggering another push notification). If your endpoint begins working again, it may receive the closed-account notification **after** the account was reopened. Make sure that, if your application takes action on closed accounts, it verifies the account is still closed by issuing an API request.
+  </Card>
+</Cards>
