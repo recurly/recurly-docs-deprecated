@@ -1,23 +1,9 @@
 ---
 title: Best practices
 excerpt: >-
-  Webhooks are not actionable on their own and should not be used for critical
-  functions like provisioning accounts. The API response from an original action
-  (i.e. signup, one time purchase) can be used to provision the account and
-  store the state/details behind the action locally. The state/details of a user
-  should be maintained in your internal database, and assumed unchanged unless a
-  change of state is indicated with a webhook. Use the receipt of a webhook to
-  trigger an API query to validate the push notification details against the
-  current API data.  Recurly webhooks may be retried or sent multiple times if
-  the delivery status is considered failed. Please make sure your endpoint can
-  receive the same notification multiple times and in the wrong order.  For
-  example, an account can close and we will send a notification for this. If
-  delivery fails, the notification will be sent again later. In the meantime,
-  the account could reopen (triggering another push notification). If your
-  endpoint begins working again, it may receive the closed account notification
-  after the account was reopened). Make sure that if your application takes
-  action on closed accounts, that it verifies the account is still closed by
-  issuing an API request.
+  Practical guidance on how to consume Recurly webhooks safely—when to treat
+  them as alerts, how to guard against duplicates, and why you must always
+  verify state with the API.
 deprecated: false
 hidden: false
 metadata:
