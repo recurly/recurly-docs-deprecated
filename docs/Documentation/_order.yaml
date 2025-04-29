@@ -5,5 +5,5 @@
 - webhooks-states
 - automatic-retries
 - manual-retries
-- lifecycle-events
 - cross-site-request-forgery-csrf-for-rails-applications
+- lifecycle-events
