@@ -20,4 +20,4 @@ Recurly lets you opt in to only the specific lifecycle event notifications you n
 
 It is possible to opt in to only the specific notifications you would like to receive, on an endpoint-by-endpoint basis. For example, if you have an endpoint that only needs to receive notifications about new accounts but not account updates, you can configure that endpoint accordingly.
 
-A full list of all notifications can be found below, along with both the JSON and XML versions of each payload.
+A full list of all notifications can be found in our **Account Notifications** dedicated page, along with both the JSON and XML versions of each payload.
