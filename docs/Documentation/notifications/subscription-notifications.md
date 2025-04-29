@@ -44,7 +44,7 @@ In addition, Subscription notifications will include information about shipping 
 * external\_sku
 * tier\_type
 
-### New Subscription
+### New subscription
 
 Sent when a new subscription is created.
 
@@ -134,7 +134,7 @@ Sent when a new subscription is created.
 </new_subscription_notification>
 ```
 
-### Updated Subscription
+### Updated subscription
 
 Sent when a subscription is upgraded, downgraded, or the renewal date is updated. The notification is sent after the modification is performed. If you modify a subscription and it takes place immediately, the notification will also be sent immediately. If the subscription change takes effect at renewal, then the notification will be sent when the subscription renews. For a notification of an upcoming change, see [Scheduled Subscription Update](/developers/reference/webhooks/#scheduled-subscription-update).
 
@@ -182,7 +182,7 @@ Sent when a subscription is upgraded, downgraded, or the renewal date is updated
 </updated_subscription_notification>
 ```
 
-### Canceled Subscription
+### Canceled subscription
 
 Sent when a subscription is canceled.  This means the subscription will not renew. The subscription state is set to canceled but the subscription is still valid until the `expires_at` date. The next notification is sent when the subscription is completely terminated.
 
@@ -228,7 +228,7 @@ Sent when a subscription is canceled.  This means the subscription will not rene
 </canceled_subscription_notification>
 ```
 
-### Expired Subscription
+### Expired subscription
 
 Sent when a subscription is no longer valid. This can happen if a canceled subscription expires or if an active subscription is refunded (and terminated immediately). If you receive this message, the account no longer has a subscription.
 
@@ -274,7 +274,7 @@ Sent when a subscription is no longer valid. This can happen if a canceled subsc
 </expired_subscription_notification>
 ```
 
-### Renewed Subscription
+### Renewed subscription
 
 Sent whenever a subscription renews. This notification is sent regardless of a successful payment being applied to the subscription---it indicates the previous term is over and the subscription is now in a new term. If you are performing metered or usage-based billing, use this notification to reset your usage stats for the current billing term.
 
@@ -321,7 +321,7 @@ Sent whenever a subscription renews. This notification is sent regardless of a s
 </renewed_subscription_notification>
 ```
 
-### Reactivated Subscription
+### Reactivated subscription
 
 Sent when a subscription is reactivated after having been canceled.
 
@@ -367,7 +367,7 @@ Sent when a subscription is reactivated after having been canceled.
 </reactivated_account_notification>
 ```
 
-### Paused Subscription
+### Paused subscription
 
 Sent when a subscription moves from state of active to paused, meaning that the subscription is now paused.
 
@@ -417,7 +417,7 @@ Sent when a subscription moves from state of active to paused, meaning that the 
 </subscription_paused_notification>
 ```
 
-### Resumed Subscription
+### Resumed subscription
 
 Sent when a subscription moves from state of paused to active, meaning that the subscription is successfully renewed and a new billing cycle has started.
 
@@ -467,7 +467,7 @@ Sent when a subscription moves from state of paused to active, meaning that the 
 </subscription_resumed_notification>
 ```
 
-### Scheduled Subscription Pause
+### Scheduled subscription pause
 
 Sent when an active and eligible subscription is scheduled to pause using the API or through the Admin UI. The `paused_at`, `resumed_at` and `remaining_pause_cycles` fields will now contain information on when the subscription will become paused, when it will resume, and how many pause cycles are left respectively.
 
@@ -517,7 +517,7 @@ Sent when an active and eligible subscription is scheduled to pause using the AP
 </scheduled_subscription_pause_notification>
 ```
 
-### Scheduled Subscription Update
+### Scheduled subscription update
 
 Sent when a subscription change is scheduled to take effect at a future date (e.g. renewal). For a notification when update is applied, see [Updated Subscription](/developers/reference/webhooks/#updated-subscription).
 
@@ -565,7 +565,7 @@ Sent when a subscription change is scheduled to take effect at a future date (e.
 </scheduled_subscription_update_notification>
 ```
 
-### Subscription Paused Modified
+### Subscription paused modified
 
 Sent when a subscription's pause duration is modified. The `resume_at` and `remaining_pause_cycles` fields will change to reflect the new date at which the subscription will resume and how many pause cycles are left.
 
@@ -615,7 +615,7 @@ Sent when a subscription's pause duration is modified. The `resume_at` and `rema
 </subscription_pause_modified_notification>
 ```
 
-### Paused Subscription Renewal
+### Paused subscription renewal
 
 Sent when a subscription’s renewal/billing cycle is skipped because it is paused. The `remaining_pause_cycles` value will decrement by 1 after each pause cycle.
 
@@ -665,7 +665,7 @@ Sent when a subscription’s renewal/billing cycle is skipped because it is paus
 </paused_subscription_renewal_notification>
 ```
 
-### Subscription Pause Canceled
+### Subscription pause canceled
 
 Sent whenever a scheduled pause is canceled. The `paused_at`, `resume_at` and `remaining_pause_cycles` will now be nil as the pause has been canceled.
 
@@ -715,7 +715,7 @@ Sent whenever a scheduled pause is canceled. The `paused_at`, `resume_at` and `r
 </subscription_pause_canceled_notification>
 ```
 
-### Low Balance Gift Card
+### Low balance gift card
 
 Sent when a gift card balance is low; the subscription is sent as payload.
 
