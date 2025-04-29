@@ -6,6 +6,6 @@
 - automatic-retries
 - manual-retries
 - cross-site-request-forgery-csrf-for-rails-applications
-- lifecycle-events
 - webhook-payloads-json-vs-xml
 - signature-verification
+- lifecycle-events
