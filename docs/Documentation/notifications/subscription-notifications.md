@@ -715,7 +715,7 @@ Sent whenever a scheduled pause is canceled. The `paused_at`, `resume_at` and `r
 </subscription_pause_canceled_notification>
 ```
 
-### Low balance gift card
+## Low balance gift card
 
 Sent when a gift card balance is low; the subscription is sent as payload.
 
