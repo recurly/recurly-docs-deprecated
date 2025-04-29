@@ -17,11 +17,9 @@ These webhooks alert you to changes in accounts and associated resources—new a
 * Each endpoint can receive up to 10 different notification types.
 * Notifications are delivered separately (e.g., a new subscription payment generates both a subscription and a payment webhook).
 
-# Key details
+# Account notifications
 
-## Account Notifications
-
-### New Account
+## New account
 
 Sent when a new account is created.
 
@@ -49,7 +47,7 @@ Sent when a new account is created.
 </new_account_notification>
 ```
 
-### Updated Account
+## Updated account
 
 Sent when an account is updated. Specifically attributes in the account information, not the billing information, shipping addresses, or account acquisition. See the [Update Account](/developers/api/latest#operation/update_account) API call for a list of attributes.
 
@@ -77,7 +75,7 @@ Sent when an account is updated. Specifically attributes in the account informat
 </updated_account_notification>
 ```
 
-### Closed Account
+## Closed account
 
 Sent when an account is closed.
 
@@ -105,7 +103,7 @@ Sent when an account is closed.
 </canceled_account_notification>
 ```
 
-### Updated Billing Information
+## Updated billing information
 
 Sent when billing information is successfully created with a credit card or updated with a credit card or token.
 
@@ -133,7 +131,7 @@ Sent when billing information is successfully created with a credit card or upda
 </billing_info_updated_notification>
 ```
 
-### New Shipping Address
+## New shipping address
 
 Sent when a new shipping address is created.
 
@@ -178,7 +176,7 @@ Sent when a new shipping address is created.
 </new_shipping_address_notification>
 ```
 
-### Updated Shipping Address
+## Updated shipping address
 
 Sent when an existing shipping address is edited.
 
@@ -223,7 +221,7 @@ Sent when an existing shipping address is edited.
 </updated_shipping_address_notification>
 ```
 
-### Deleted Shipping Address
+## Deleted shipping address
 
 Sent when an existing shipping address is deleted.
 
