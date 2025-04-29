@@ -8,7 +8,7 @@ metadata:
 ---
 Each webhook is sent as a separate notification, retained for 15 days, and viewable in the Recurly console with full delivery status and error details.
 
-### Prerequisites & limitations
+### Prerequisites and limitations
 
 * Notifications are stored for **15 days** only.
 * Deleting an endpoint will remove its last 15 days of notifications from the console.
