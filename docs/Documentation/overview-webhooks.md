@@ -8,27 +8,16 @@ hidden: false
 metadata:
   robots: index
 ---
-**Webhooks** let **Recurly** push event data to a URL you control—no polling required. Whenever something meaningful happens in your site (for example, a subscription renews or a payment fails) Recurly sends a signed JSON payload to each subscribed endpoint. Your application can then update internal records, kick off workflows, or alert downstream partners.
+# Webhooks
 
-> **Tip** Webhooks are designed for *notification* rather than *source-of-truth* processing. Always confirm details with the Recurly API before taking irreversible action. See our**Best Practices** page.
+Webhooks let you notify your internal systems and partner applications whenever something important happens in Recurly. Treat them as **alerts**—not as the sole source of truth—then follow the [Best Practices](#best-practices) section to act on those events safely.
 
-***
+Recurly can post notifications to any publicly reachable server. When a qualifying event occurs (for example, a new account is created), Recurly sends a webhook to each endpoint you configure—up to **10 endpoints** per site. Every endpoint receives the notifications for the [lifecycle events](#lifecycle-events) it is subscribed to.
 
-### Prerequisites & limitations
+A notification counts as **delivered** only when Recurly gets a timely, successful response:
 
-* Your listener **must** be publicly reachable on port `80` or `443`.
-* It must return an HTTP **2xx** status within **5 seconds**—otherwise Recurly queues a retry.
-* Maximum **10 endpoints** per Recurly site.
-* Recurly does **not** follow redirects; 3xx, 4xx, or 5xx responses are treated as failures.
-* Use HTTPS whenever possible; self-signed certificates are not supported.
+* The endpoint must listen on port **80 (HTTP)** or **443 (HTTPS)**—other ports are not supported.
+* The endpoint must reply within **5 seconds**.
+* The response must be an HTTP **2XX** status (200, 201, 204, etc.). Recurly does not follow redirects, and non-2XX responses are treated as failures.
 
-***
-
-### Key details
-
-* **Event coverage**: Receive notifications for account, subscription, invoice, credit, transaction, dunning and gift-card lifecycle events. [Learn more](#lifecycle-events)
-* **Delivery guarantee**: Recurly retries failed webhooks exponentially for up to seven days; each attempt includes an HMAC-SHA256 signature for verification. [Learn more](#security-and-retries)
-* **Endpoint management**: Add, edit, pause or delete endpoints in **Developers → Webhooks** (UI) or via the API. [Learn more](#configuring-endpoints)
-* **Testing tools**: Use services such as RequestBin or Mockbin to inspect payloads before going live. [Learn more](https://requestbin.com/)
-
-***
+Need a quick test endpoint? Try <a href="https://requestbin.com/">RequestBin</a> or <a href="https://mockbin.org/">Mockbin</a>.
