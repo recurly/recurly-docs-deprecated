@@ -4,5 +4,5 @@
 - webhook-details
 - webhooks-states
 - automatic-retries
-- lifecycle-events
 - manual-retries
+- lifecycle-events
