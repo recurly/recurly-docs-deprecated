@@ -8,9 +8,9 @@ hidden: false
 metadata:
   robots: index
 ---
-Webhooks are *notifications*, not commands. Use them to discover that something **might** have changed in Recurly, then confirm the authoritative state with the Recurly API before you update your own systems.
+Webhooks are **notifications**, not commands. Use them to discover that something **might** have changed in Recurly, then confirm the authoritative state with the Recurly API before you update your own systems.
 
-### Prerequisites & limitations
+### Prerequisites and limitations
 
 * Your endpoint already meets the connectivity rules outlined in **Webhooks** (publicly reachable on port 80/443 and capable of replying with a **2XX** within 5 seconds).
 * Recurly can retry or resend a webhook, so duplicate deliveries are expected.
