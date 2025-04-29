@@ -18,7 +18,7 @@ This section covers how Recurly handles webhook retries, how to authenticate inc
 
 # Key details
 
-If Recurly fails to deliver a webhook, it will retry it (see [Automatic Retries](#automatic-retries), below).
+If Recurly fails to deliver a webhook, it will retry it (see [Automatic Retries](https://docs.recurly.com/v1.3/docs/automatic-retries#/), below).
 
 Webhooks support **HTTP Basic Authentication** to verify the request came from Recurly's servers.
 
