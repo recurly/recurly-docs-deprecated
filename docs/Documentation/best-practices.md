@@ -31,7 +31,9 @@ Recurly webhooks may be retried or sent multiple times if delivery is considered
 * Accept the same notification more than once.
 * Tolerate events that arrive in the wrong order.
 
-> **Example**\
-> An account is closed and a webhook is sent. Delivery fails, so Recurly schedules a retry.
-> Before the retry succeeds, the customer reopens the account, generating a second webhook.
-> When your endpoint comes back online, it might receive the *closed* notification **after** the *reopened* one. **Always** verify the current account status via the API before acting on the webhook payload.
+\<Cards columns=\{1}>
+&#x20; \<Card title="Example" href="https\://readme.com" icon="fa-home">
+An account is closed and a webhook is sent. Delivery fails, so Recurly schedules a retry.\\
+Before the retry succeeds, the customer reopens the account, generating a second webhook.
+When your endpoint comes back online, it might receive the \*closed\* notification \*\*after\*\* the \*reopened\* one. \*\*Always\*\* verify the current account status via the API before acting on the webhook payload.  \</Card>
+\</Cards>
