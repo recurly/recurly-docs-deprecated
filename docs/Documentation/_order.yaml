@@ -5,3 +5,4 @@
 - webhooks-states
 - automatic-retries
 - lifecycle-events
+- manual-retries
