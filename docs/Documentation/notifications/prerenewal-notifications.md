@@ -16,7 +16,7 @@ Prerenewal notifications let you alert customers or internal systems ahead of su
 * Only subscription-related prerenewal events are available.
 * Each endpoint can subscribe to these prerenewal events just like any other webhook.
 
-# Key details
+# Prerenewal notifications
 
 Webhooks notifications that are triggered before specific subscription events. The number of days in advance the webhook is triggered can be configured in the webhooks configuration screen.
 
