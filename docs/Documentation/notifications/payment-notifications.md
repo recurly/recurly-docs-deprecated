@@ -1,5 +1,9 @@
 ---
 title: Payment notifications
+excerpt: >-
+  Legacy payment webhook events (scheduled, processing, succeeded, failed,
+  refunded, voided, fraud info updated, transaction status updated, authorized)
+  emitted in JSON or XML, including full transaction details in XML payloads.
 deprecated: false
 hidden: false
 metadata:
