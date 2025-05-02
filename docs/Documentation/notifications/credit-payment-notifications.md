@@ -23,7 +23,7 @@ Credit Payment Notifications inform you when an open credit balance is applied t
 | `credit_payment.created` | `<new_credit_payment_notification>`    | Sent when a credit payment is created (applying credit balance in a billing event, removing a credit invoice balance, or refunding a credit payment as a transaction). |
 | `credit_payment.voided`  | `<voided_credit_payment_notification>` | Sent when a credit payment is voided because the charge invoice it was applied to has failed.                                                                          |
 
-### Credit Payment Schema
+## Credit payment schema
 
 ```json
 {
