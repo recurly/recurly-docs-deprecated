@@ -9,14 +9,6 @@ hidden: false
 metadata:
   robots: index
 ---
-Thought for a couple of seconds
-
-#### metadata description
-
-<br />
-
-# Overview
-
 Dunning Event Notifications fire according to your site’s dunning configuration whenever an invoice enters or remains in dunning. Use these webhooks to trigger custom customer outreach—via email, SMS, Slack, or other channels—to improve recovery and reduce churn.
 
 ### Prerequisites and limitations
