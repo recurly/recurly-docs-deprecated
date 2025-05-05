@@ -1,5 +1,6 @@
 ---
 title: Third-party checkout guide
+excerpt: A quick guide on how to use and implement third-party elements (Stripe).
 deprecated: false
 hidden: false
 metadata:
