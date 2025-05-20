@@ -22,7 +22,7 @@ If Recurly fails to deliver a webhook, it will retry it (see [Automatic Retries]
 
 Webhooks support **HTTP Basic Authentication** to verify the request came from Recurly's servers.
 
-Please see our [IP Whitelisting documentation](https://docs.recurly.com/docs/ip-allowlist#/) for the current list of Recurly IPs.\
+Please see our [IP Whitelisting documentation](https://docs.recurly.com/v1.0/docs/ip-allowlist#/) for the current list of Recurly IPs.\
 You may refuse other IP addresses at your endpoint or firewall.
 
 <Cards columns={1}>
