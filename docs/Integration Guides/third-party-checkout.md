@@ -1,5 +1,5 @@
 ---
-title: Third-party checkout guide
+title: 'Third-party checkout guide: Stripe Elements'
 excerpt: A quick guide on how to use and implement third-party elements (Stripe).
 deprecated: false
 hidden: false
@@ -34,7 +34,7 @@ Recurly will be supporting Dynamic Payment Methods. To add payment methods to yo
 
 * **Cards**: Visa, MasterCard, Discover, Diners, JCB/I, Union Pay, American Express, Cartes Bancaires
 
-* **Wallets**: Link Pay, Cash App Pay, Revolut
+* **Wallets**: Link Pay, Cash App Pay, Revolut, Klarna (Pay Now / Later, BNPL)
 
 * **Direct Debit**: SEPA, ACH, BACS, BECS, iDeal
 
