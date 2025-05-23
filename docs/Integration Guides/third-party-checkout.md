@@ -28,7 +28,7 @@ This guide is intended to help you understand how to connect your Stripe Element
 
 For more information on the V3 API, see our [API Reference Hub](https://recurly.com/developers/api/).
 
-### Supported Payment Methods (Q4 Support)
+### Supported Payment Methods (Q1 Support)
 
 Recurly will be supporting Dynamic Payment Methods. To add payment methods to your integration and have them show up dynamically, request these payment methods in your Stripe Dashboard individually.
 
@@ -83,6 +83,12 @@ It is important to understand your own checkout flow as you may use both setup a
 Mode `payment` can be used any time a customer is signing up for a subscription where there is no trial, or is making a one-time purchase. This can also be used if they are updating their billing info and want to make a purchase at the same time. The best rule of thumb is to render the element after you know there will be a charge amount occurring (non-zero amount).
 
 Mode `setup` should be used when a customer wishes to sign up for a free trial subscription, or is updating their billing information without making a purchase. This mode should also be used when creating a future-dated subscription, as we need to run a verification to retrieve reusable payment tokens for future usage. Again, the rule of thumb would be to use the `setup` mode when there is no expected amount for the immediate customer interaction.
+
+> **Please note:**
+>
+> * Not all payment methods support ‘setup’ mode (free trials or billing info updates).
+>
+> **Example:** BACS does not support ‘setup’ in Payment Elements.
 
 ### Configuring Capture Method
 
