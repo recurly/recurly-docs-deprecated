@@ -163,19 +163,16 @@ When building your Web Components, ensure you have also created a payment method
 
 * [Store card details | Adyen Docs](https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#store-card-details)
 
-Key information from this guide includes:
+**Key information from this guide includes:**
 
-* Consent for Future Purchases: Prompting buyers for consent before saving their payment details. Note, if customers do\
-  not check the box to store the payment method for future usage, the customer cannot use their payment method for
-  additional purchases or subscriptions. Triggering conditional storage refers to `enableStoreDetails`, which we
-  do not recommend using.
+* Consent for Future Purchases: Prompting buyers for consent before saving their payment details. Note, if customers do not check the box to store the payment method for future usage, the customer cannot use their payment method for additional purchases or subscriptions. Triggering conditional storage refers to `enableStoreDetails`, which we do not recommend using.
 
-### Co-badged Guidance
+### Co-badged guidance
 
-If you choose to [show debit and credit cards separately](https://docs.adyen.com/payment-methods/cards/web-component/?tab=advanced_flow_1_2#show-debit-credit-separately)\
-If you are accepting co-badged cards, such as Cartes Bancaires, ensure you are following all applicable regional
-requirements for co-badged cards in your UI and Card Web Component handling. In short, the regulations can be whittled
-down to two factors:
+If you choose to [show debit and credit cards separately](https://docs.adyen.com/payment-methods/cards/web-component/?tab=advanced_flow_1_2#show-debit-credit-separately).
+
+If you are accepting co-badged cards, such as Cartes Bancaires, ensure you are following all applicable regional\
+requirements for co-badged cards in your UI and Card Web Component handling. In short, the regulations can be whittled down to two factors:
 
 * Use ‘Cards’ instead of ‘Credit Card’ and ‘Ensure the consumer has the ability to select their desired network choice.
 * Adyen Documentation: [Co-badged cards compliance | Adyen Docs](https://docs.adyen.com/online-payments/co-badged-cards-compliance/)
@@ -183,7 +180,7 @@ down to two factors:
 Recurly already supports co-badge compliance, so renewals will honor the consumer’s choice for renewals by default. To\
 avoid complexity, it is recommended to avoid separating Debit and Credit in the UI.
 
-## Step 3: Create a Purchase Request
+## Step 3: Create a purchase request
 
 To make a purchase using the Recurly.js Adyen State Token ID and Return URL, if applicable, you will provide it in a\
 Recurly V3 API purchase request. In the example below, one subscription is generated using the plan code created in our
@@ -191,7 +188,7 @@ Recurly V3 API purchase request. In the example below, one subscription is gener
 
 Documentation: [API Reference | Recurly Developer Hub](/developers/api)
 
-## Step 4: Process the Purchase Response
+## Step 4: Process the purchase response
 
 If the purchase was not successful, you’ll receive an error response indicating the type of error that was encountered.
 
@@ -201,7 +198,7 @@ failures.
 If the purchase is successful, an InvoiceCollection will be returned as the response type. This object consists of any\
 charge or credit invoices created during the purchase.
 
-## Step 5: Verify and Finish
+## Step 5: Verify and finish
 
 If the purchase was successful, you should now be able to access all associated objects that were created as a result. You can verify through the API or the admin console.
 
