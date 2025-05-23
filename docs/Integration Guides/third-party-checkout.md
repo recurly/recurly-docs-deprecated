@@ -251,7 +251,7 @@ An example request body to POST /purchases:
 
 Many additional options are available to you. See the [Create Purchase](https://recurly.com/developers/api/latest/index.html#operation/create_purchase) reference to learn more.
 
-### Redirect Method APMs
+#### Redirect Method APMs
 
 Certain APMs require displaying a QR code or other redirect to the consumer so they can authenticate in the Cash App application on their mobile device. Recurly utilizes our 3-D Secure exo-system to process Cash App transactions. When you provide a Stripe `ctoken` value in your API request, Recurly will respond with a `three_d_secure_action_token`
 
@@ -266,6 +266,14 @@ See [Recurly.js Action Token documentation](https://recurly.com/developers/refer
 > **Related APMs:** Cash App and Revolut
 >
 > **Please Note:** For Revolut, you must submit the action token to Recurly.js twice, to receive a result token.
+
+#### Direct Debit and Country Restricted Payment Methods
+
+Certain payment methods require the Stripe business account holder to be located in the respective country of support. For example, you will not be able to enable BACS or Revolut without a UK domiciled business, and BECS cannot be enabled outside of Australia.
+
+**Related Payment Methods:** BACS (UK), BECS (AU), Revolut (UK)
+
+**Direct Debit Support Note:** BACS do not support setup intents through the Payment Element, and therefore <u>cannot support Billing Information updates or Free Trial subscriptions using Stripe Elements where payment details are required</u>. To support Billing Information updates, subscriptions will need to be cancelled and set up again rather than using billing update features on Recurly. To support Trials using BACS, you may use trials that do not require payment data. Upon conversion, the customer will need to go through the Elements flow.
 
 ### Step 4: Process the Purchase Response
 
