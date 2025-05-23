@@ -13,7 +13,7 @@ metadata:
 
 This guide walks you through how to connect your Adyen Components integration correctly to Recurly via the V3 API and Recurly.js. You’ll learn how to configure Adyen’s Web Components, tokenize payments with Recurly.js, and make purchase requests against the Recurly API.
 
-# Prerequisites & limitations
+### Prerequisites & limitations
 
 * A working Adyen Components integration using the **Advanced Flow** (Cards, Cash App Pay, Google Pay, Apple Pay).
 * Recurly.js loaded on your page and initialized per our [Recurly.js documentation](/developers/reference/recurly-js).
@@ -26,7 +26,7 @@ This guide walks you through how to connect your Adyen Components integration co
 
 ***
 
-## Step 1: Build your Adyen Components + Recurly.js Integration
+## Step 1: Build your Adyen components + Recurly.js integration
 
 Follow Adyen’s **Advanced Flow** docs to render Web Components for each method:
 
@@ -62,7 +62,7 @@ Before rendering, fetch your supported methods via Adyen’s API and pass the `p
 
 ***
 
-## Step 2: Tokenize Adyen Components with Recurly.js
+## Step 2: Tokenize Adyen components with Recurly.js
 
 Use an `onSubmit` handler in your Adyen checkout to generate a Recurly token from the component state. Send this token to your server to complete the purchase via Recurly’s API.
 
@@ -94,7 +94,7 @@ const adyenCheckout = await AdyenWeb.AdyenCheckout({
 
 ***
 
-## Step 3: Configure Adyen Component Best Practices
+## Step 3: Configure Adyen component best practices
 
 Ensure the following options are set for reliable vaulting and renewals:
 
@@ -116,7 +116,7 @@ For full Adyen advanced flow guidance, see:
 
 ***
 
-## Step 4: Create a Purchase via the Recurly V3 API
+## Step 4: Create a purchase via the Recurly V3 API
 
 Once you have a valid component token, invoke the V3 API’s purchase endpoint. For example, to subscribe a plan:
 
@@ -141,7 +141,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ***
 
-## Step 5: Handle the Purchase Response
+## Step 5: Handle the purchase response
 
 – On success, Recurly returns an `InvoiceCollection` containing any charge or credit invoices created.\
 – On error, inspect the response code and message for validation or gateway issues, and surface them to the user.
