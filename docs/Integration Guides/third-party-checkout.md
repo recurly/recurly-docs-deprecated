@@ -261,7 +261,7 @@ This token can be provided to Recurly.js to unpack and direct your consumer to c
 
 After your consumer processes their payment with Cash App, Recurly.js will produce a `three_d_secure_action_result_token` which you may provide in a retry of your initial purchase call. See `Step 4` for more details on parsing the purchase response.
 
-See [Recurly.js Action Token documentation](https://recurly.com/developers/reference/recurly-js/#3d-secure) at our Developer Hub.
+See [Recurly.js Action Token documentation](https://docs.recurly.com/v1.2/docs/3d-secure#/) at our Developer Hub.
 
 > 📘 Important:
 >
