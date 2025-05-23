@@ -16,11 +16,7 @@ metadata:
 
 ***
 
-# Third Party Checkout
-
-### Stripe Elements Overview
-
-This guide is intended to help you understand how to connect your Stripe Elements integration correctly to Recurly via the V3 API.
+# Third party checkout
 
 > 📘 Important:
 >
@@ -28,7 +24,7 @@ This guide is intended to help you understand how to connect your Stripe Element
 
 For more information on the V3 API, see our [API Reference Hub](https://recurly.com/developers/api/).
 
-### Supported Payment Methods (Q1 Support)
+### Supported payment methods (Q1 Support)
 
 Recurly will be supporting Dynamic Payment Methods. To add payment methods to your integration and have them show up dynamically, request these payment methods in your Stripe Dashboard individually.
 
@@ -38,7 +34,7 @@ Recurly will be supporting Dynamic Payment Methods. To add payment methods to yo
 
 * **Direct Debit**: SEPA, ACH, BACS, BECS
 
-### Step 1: Build your Stripe Elements Integration
+### Step 1: Build your Stripe Elements integration
 
 You will want to follow Stripe Documentation to build out an integration to the Stripe Payment Element. Documentation links are below:
 
@@ -90,7 +86,7 @@ Mode `setup` should be used when a customer wishes to sign up for a free trial s
 >
 > **Example:** BACS does not support ‘setup’ in Payment Elements.
 
-### Configuring Capture Method
+### Configuring capture method
 
 Stripe’s `captureMethod` Elements configuration parameter allows you to create a confirmation token that allows separate Authorization and Capture, or an all-in-one Purchase whether or not the intent is a subscription signup or a one-time transaction.
 
@@ -104,13 +100,13 @@ Certain APMs require return URLs to be passed to Stripe within the confirmation 
 
 You can read more about Return URLs on Stripe’s Website on various pages. Recurly does not provide a return URL for usage with Stripe Elements.
 
-### Choosing Where to Confirm Payment or Setup Intents
+### Choosing where to confirm payment or setup intents
 
 Recurly will confirm payment and setup intent on your behalf. You do not need to do this on your own.
 
 * [Design an integration | Stripe Documentation](https://stripe.com/docs/payments/payment-element#design)
 
-### External Payment Methods
+### External payment methods
 
 Recurly does not support Stripe’s External Payment Methods option – if you choose to support these methods in your Elements integration, these transactions and payment methods will not be accepted for payments or subscriptions on the Recurly platform.
 
@@ -122,7 +118,7 @@ If you would like to add external invoices from a self-hosted integration to Rec
 
 If you would like Recurly to support one of these External Payment Methods, please reach out to your Recurly Account manager and submit a feature request.
 
-### Custom Billing Info Collection
+### Custom billing info collection
 
 Recurly suggests allowing Stripe to determine billing information collection dynamically, but you can modify this by customizing which billing information details you collect. See documentation below:
 
@@ -130,7 +126,7 @@ Recurly suggests allowing Stripe to determine billing information collection dyn
 
 By default, all fields are set to `auto`. This balances minimizing customer friction and maintaining optimal authorization rates. If you choose to set your Elements integration to `never`, you will need to collect and pass those details via the Recurly API fields instead.
 
-### Saving Payment Details
+### Saving payment details
 
 Since your checkout will be handling much of the buyer consent and recollection of information for known customers, it is imperative to follow Stripe’s and Recurly’s recommendations from both this page, and this guide.
 
@@ -147,7 +143,7 @@ If this happens, `allow_redisplay` will appear in Confirmation Token retrievals 
 
 * When the confirmation token returns as ‘limited’, this consumer will not be able to use their billing info on file for additional subscriptions or one-time purchases. Expect declines for attempts using a Stripe token in this state.
 
-### Migrating from Stripe Payment Methods to Confirmation Tokens
+### Migrating from Stripe payment methods to confirmation tokens
 
 If your current integration with Stripe uses Payment Methods, see Stripe’s documentation for migrating to Confirmation Tokens here:
 
@@ -273,7 +269,7 @@ See [Recurly.js Action Token documentation](https://recurly.com/developers/refer
 >
 > **Please Note:** For Revolut, you must submit the action token to Recurly.js twice, to receive a result token.
 
-#### Direct Debit and Country Restricted Payment Methods
+#### Direct Debit and country restricted payment methods
 
 Certain payment methods require the Stripe business account holder to be located in the respective country of support. For example, you will not be able to enable BACS or Revolut without a UK domiciled business, and BECS cannot be enabled outside of Australia.
 
@@ -281,17 +277,17 @@ Certain payment methods require the Stripe business account holder to be located
 
 **Direct Debit Support Note:** BACS do not support setup intents through the Payment Element, and therefore <u>cannot support Billing Information updates or Free Trial subscriptions using Stripe Elements where payment details are required</u>. To support Billing Information updates, subscriptions will need to be cancelled and set up again rather than using billing update features on Recurly. To support Trials using BACS, you may use trials that do not require payment data. Upon conversion, the customer will need to go through the Elements flow.
 
-### Step 4: Process the Purchase Response
+### Step 4: Process the purchase response
 
 If the purchase was not successful, you’ll receive an error response indicating the type of error that was encountered. Errors could occur due to a bad request (missing or invalid parameters), or other reasons such as payment gateway failures.
 
 If the purchase is successful, an `InvoiceCollection` will be returned as the response type. This object consists of any charge or credit invoices created during the purchase.
 
-### Step 5: Verify and Finish
+### Step 5: Verify and finish
 
 If the purchase was successful, you should now be able to access all associated objects that were created as a result. You can verify through the API or the admin console.
 
-### Next Steps
+### Next steps
 
 Now that you know how to create new [accounts](https://app.recurly.com/go/accounts), [subscriptions](https://app.recurly.com/go/subscriptions) and one-time payments, take a look at the [Subscription Management](https://recurly.com/developers/guides/manage-subscription.html) guide to learn more about how to manage the subscription changes after the initial purchase.
 
