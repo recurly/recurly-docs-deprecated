@@ -307,7 +307,6 @@ Below is an example of Recurly’s XML and JSON error responses for a CVV mismat
   </transaction>
 </errors>
 ```
-
 ```json
 {
   "error": {
