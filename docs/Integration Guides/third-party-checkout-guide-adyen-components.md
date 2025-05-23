@@ -5,7 +5,7 @@ excerpt: >-
   V3 API and Recurly.js, enabling you to accept cards, wallets, and other
   payment methods with tokenization and vaulting.
 deprecated: false
-hidden: true
+hidden: false
 metadata:
   robots: index
 ---
