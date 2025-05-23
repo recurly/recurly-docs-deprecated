@@ -30,8 +30,6 @@ Before you begin, read the [Quickstart Guide](https://docs.recurly.com/v1.1/docs
 
 ***
 
-<br />
-
 ## Step 1: Creating a plan with usage plan add-ons
 
 In this guide, we’ll create a plan add-on that supports subscriptions and usage logging. To set this up, we’ll use the [Create an add-on](https://recurly.com/developers/api/v2021-02-25/index.html#operation/create_plan_add_on) endpoint. When creating a usage plan add-on, you can choose to charge by a percentage of usage logged, a unit amount per usage logged, or a [quantity based pricing model](https://docs.recurly.com/docs/billing-models#section-quantity-based). In this guide, we’ll create two plans, each with its own usage add-on—one using usage percentage and another with quantity based pricing.\
