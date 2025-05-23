@@ -36,7 +36,7 @@ Recurly will be supporting Dynamic Payment Methods. To add payment methods to yo
 
 * **Wallets**: Link Pay, Cash App Pay, Revolut, Klarna (Pay Now / Later, BNPL)
 
-* **Direct Debit**: SEPA, ACH, BACS, BECS, iDeal
+* **Direct Debit**: SEPA, ACH, BACS, BECS
 
 ### Step 1: Build your Stripe Elements Integration
 
