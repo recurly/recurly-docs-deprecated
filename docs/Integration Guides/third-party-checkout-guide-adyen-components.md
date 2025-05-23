@@ -152,4 +152,4 @@ Authorization: Bearer YOUR_API_KEY
 
 After completing an initial purchase, explore our Subscription Management guide to learn how to update, cancel, or migrate subscriptions:
 
-* [Subscription Management](/developers/guides/manage-subscription.html)
+* [Subscription Management](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/)
