@@ -1,5 +1,5 @@
 ---
-title: 'Third-party checkout guide: Stripe Elements'
+title: 'Third-party checkout guide: Stripe elements'
 excerpt: A quick guide on how to use and implement third-party elements (Stripe).
 deprecated: false
 hidden: false
