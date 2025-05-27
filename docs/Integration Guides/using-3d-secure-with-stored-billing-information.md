@@ -47,6 +47,8 @@ Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-st
 
 **Note:** If you are using [Cybersource](https://docs.recurly.com/docs/cybersource#/) or [WorldPay](https://docs.recurly.com/docs/worldpaydlocal-latam-support#/), you will want to *start* this process with Recurly.js and pass in the billing info ID or account code to Recurly.js and pass in a `token_id` to one of the above two endpoints. This is because Cybersource and WorldPay require a data collector to capture consumer information for 3DS to function properly on those platforms.
 
+See more detailed information for supporting known billing infos in Recurly.js  in our development hub.
+
 ### Handling Re-verification and 3DS Authentication Failures
 
 Consumers can fail SCA for a multitude of reasons including cancelling out of the challenge window, browsers blocking pop-up modals, account takeover / fraudulent attempts, and more. You may offer consumers multiple chances to resume their subscription as per your own business needs. It is recommended to request new billing information after a few attempts to reverify existing billing information.
