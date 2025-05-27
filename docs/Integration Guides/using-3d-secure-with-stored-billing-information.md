@@ -73,4 +73,4 @@ After a successful verification and resume/reactivation, you can confirm the det
 
 ## Next steps
 
-Now that you can create new [accounts](https://app.recurly.com/go/accounts), [subscriptions](https://app.recurly.com/go/subscriptions), and one-time payments, explore the [Subscription Management](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/) guide to learn how to modify subscriptions after the initial purchase.
+Now that you can reverify billing information and manage paused or cancelled subscriptions, explore the [Subscription Management](https://docs.recurly.com/v1.1/docs/managing-subscription-methods-guides#/) guide to learn additional methods to modify subscriptions after the initial purchase.
