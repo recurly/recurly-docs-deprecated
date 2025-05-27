@@ -43,9 +43,9 @@ You can do this in one of two ways depending on your preference:
 
 Once you've done this, if 3DS challenge is required, you will receive a `three_d_secure_action_token_id` as documented in the [3DS integration guide](https://docs.recurly.com/v1.1/docs/3d-secure-20-integration-guide#/versions). From here, follow the flows outlined in the [3DS integration guide](https://docs.recurly.com/v1.1/docs/3d-secure-20-integration-guide#/versions) to complete 3DS for re-verification.
 
-Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-started) to submit the 3DS action token and resubmit the verification using the action result token. Once you have a successful reverification transaction response from the gateway, you may move on to Step 2.
+Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-started) to submit the 3DS action token and resubmit the verification using the action result token. Once you have a successful re-verification transaction response from the gateway, you may move on to Step 2.
 
-**Note:** If you are using Cybersource or WorldPay, you will want to *start* this process with Recurly.js and pass in the billing info ID or account code to Recurly.js and pass in a `token_id` to one of the above two endpoints. This is because Cybersource and WorldPay require a data collector to capture consumer information for 3DS to function properly on those platforms.
+**Note:** If you are using [Cybersource](https://docs.recurly.com/docs/cybersource#/) or [WorldPay](https://docs.recurly.com/docs/worldpaydlocal-latam-support#/), you will want to *start* this process with Recurly.js and pass in the billing info ID or account code to Recurly.js and pass in a `token_id` to one of the above two endpoints. This is because Cybersource and WorldPay require a data collector to capture consumer information for 3DS to function properly on those platforms.
 
 ### Handling Re-verification and 3DS Authentication Failures
 
