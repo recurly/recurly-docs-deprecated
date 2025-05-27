@@ -45,6 +45,8 @@ Once you've done this, if 3DS challenge is required, you will receive a `three_d
 
 Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-started) to submit the 3DS action token and resubmit the verification using the action result token. Once you have a successful reverification transaction response from the gateway, you may move on to Step 2.
 
+**Note:** If you are using Cybersource or WorldPay, you will want to *start* this process with Recurly.js and pass in the billing info ID or account code to Recurly.js and pass in a `token_id` to one of the above two endpoints. This is because Cybersource and WorldPay require a data collector to capture consumer information for 3DS to function properly on those platforms.
+
 ### Handling Re-verification and 3DS Authentication Failures
 
 Consumers can fail SCA for a multitude of reasons including cancelling out of the challenge window, browsers blocking pop-up modals, account takeover / fraudulent attempts, and more. You may offer consumers multiple chances to resume their subscription as per your own business needs. It is recommended to request new billing information after a few attempts to reverify existing billing information.
