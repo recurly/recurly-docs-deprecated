@@ -30,7 +30,7 @@ This guide shows you how to use the [Purchase endpoint](https://developers.recur
 
 ***
 
-# 3DS prior to Resuming a Paused Subscription
+# 3DS prior to Reactivating or Resuming a Subscription
 
 ## Step 1: Submit a Verification Request via API
 
@@ -38,150 +38,30 @@ When a customer who has a paused subscription requests that subscription is resu
 
 You can do this in one of two ways depending on your preference:
 
-* With CVV: [https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify\_billing\_info\_cvv](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info_cvv)
-* Without CVV: [https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify\_billing\_info](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info)
+* With CVV: [Verify an account's credit card billing cvv](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info_cvv)
+* Without CVV: [Verify an account's credit card billing information](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info)
 
-Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-started) to embed secure payment fields in your front-end code. This library collects customer card data and returns a **token** (`rjs_token_id`) representing the payment details. You’ll use this token when making your purchase request to Recurly.
+Once you've done this, if 3DS challenge is required, you will receive a `three_d_secure_action_token_id` as documented in the [3DS integration guide](https://docs.recurly.com/v1.1/docs/3d-secure-20-integration-guide#/versions). From here, follow the flows outlined in the [3DS integration guide](https://docs.recurly.com/v1.1/docs/3d-secure-20-integration-guide#/versions) to complete 3DS for re-verification.
 
-***
+Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-started) to submit the 3DS action token and resubmit the verification using the action result token. Once you have a successful reverification transaction response from the gateway, you may move on to Step 2.
 
-## Step 2: Create a purchase request
+### Handling Re-verification and 3DS Authentication Failures
 
-Send a request to the `create_purchase` method on Recurly’s API, including:
+Consumers can fail SCA for a multitude of reasons including cancelling out of the challenge window, browsers blocking pop-up modals, account takeover / fraudulent attempts, and more. You may offer consumers multiple chances to resume their subscription as per your own business needs. It is recommended to request new billing information after a few attempts to reverify existing billing information.
 
-* **Customer account data** (e.g., code, name, billing info)
-* **Subscriptions** (with plan codes)
-* **Optional** one-time line items or charges
+## Step 2: Resume or Reactivate the Subscription
 
-Below are example calls in different languages:
+**Resuming a Paused Subscription**: If successful, you can [resume the paused subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/resume_subscription) by implementing the Resume Subscription endpoint and reference the subscription ID in your path.
 
-```ruby
-purchase = {
-  currency: "USD",
-  account: {
-    code: "bdumonde",
-    first_name: "Benjamin",
-    last_name: "Du Monde",
-    billing_info: {
-      token_id: rjs_token_id
-    },
-  },
-  subscriptions: [
-    { plan_code: "coffee-monthly" }
-  ]
-}
+Read more about subscription lifecycles in our dedicated [Subscription lifecycle documentation](https://docs.recurly.com/docs/subscription-lifecycle#/).
 
-invoice_collection = @client.create_purchase(body: purchase)
-```
-```javascript
-let purchaseReq = {
-  currency: 'USD',
-  account: {
-    code: 'bdumonde',
-    firstName: 'Benjamin',
-    lastName: 'Du Monde',
-    billingInfo: {
-      tokenId: rjsTokenId
-    }
-  },
-  subscriptions: [
-    { planCode: 'coffee-monthly' }
-  ]
-}
-let invoiceCollection = await client.createPurchase(purchaseReq)
-```
-```python
-purchase = {
-    "currency": "USD",
-    "account": {
-        "code": "bdumonde",
-        "first_name": "Benjamin",
-        "last_name": "Du Monde",
-        "billing_info": {"token_id": rjs_token_id},
-    },
-    "subscriptions": [{"plan_code": "coffee-monthly"}],
-}
-invoice_collection = client.create_purchase(purchase)
-```
-```java
-PurchaseCreate purchase = new PurchaseCreate();
-purchase.setCurrency("USD");
+**Reactivating a Cancelled Subscription** If successful, you can [reactivate the cancelled subscription](https://recurly.com/developers/api/v2021-02-25/index.html#operation/reactivate_subscription) by implementing the Reactivate Subscription endpoint and reference the subscription ID in your path.
 
-AccountPurchase account = new AccountPurchase();
-account.setCode("bdumonde");
-account.setFirstName("Benjamin");
-account.setLastName("Du Monde");
-purchase.setAccount(account);
+Read more about subscription lifecycles in our dedicated [Subscription lifecycle documentation](https://docs.recurly.com/docs/subscription-lifecycle#/).
 
-BillingInfoCreate billing = new BillingInfoCreate();
-billing.setTokenId(rjsTokenId);
-account.setBillingInfo(billing);
+## Step 3: Verify and finish
 
-List<SubscriptionPurchase> subs = new ArrayList<>();
-SubscriptionPurchase sub = new SubscriptionPurchase();
-sub.setPlanCode("coffee-monthly");
-subs.add(sub);
-purchase.setSubscriptions(subs);
-
-InvoiceCollection collection = client.createPurchase(purchase);
-```
-```csharp
-var purchaseReq = new PurchaseCreate()
-{
-    Currency = "USD",
-    Account = new AccountPurchase()
-    {
-        Code = "bdumonde",
-        FirstName = "Benjamin",
-        LastName = "Du Monde",
-        BillingInfo = new BillingInfoCreate()
-        {
-            TokenId = rjsTokenId
-        }
-    },
-    Subscriptions = new List<SubscriptionPurchase>()
-    {
-        new SubscriptionPurchase() { PlanCode = "coffee-monthly" }
-    }
-};
-
-InvoiceCollection collection = client.CreatePurchase(purchaseReq);
-```
-
-> **Tip:** Many more parameters are available. See the [Create Purchase](https://developers.recurly.com/api/latest/#operation/create_purchase) reference to learn more.
-
-***
-
-## Step 3: Process the purchase response
-
-A successful purchase returns an **InvoiceCollection**, which contains any charge or credit invoices generated by the request. If the purchase fails, you’ll receive an error response indicating what went wrong.
-
-```ruby
-invoice = invoice_collection.charge_invoice
-puts "Created Invoice #{invoice}"
-```
-```js
-let invoice = invoiceCollection.chargeInvoice
-console.log('Created Invoice:', invoice)
-```
-```python
-invoice = invoice_collection.charge_invoice
-print("Created Invoice %s" % invoice)
-```
-```java
-Invoice invoice = collection.getChargeInvoice();
-System.out.println("Created Charge Invoice with Id: " + invoice.getId());
-```
-```csharp
-Invoice invoice = collection.ChargeInvoice;
-Console.WriteLine($"Created Invoice with Number: {invoice.Number}");
-```
-
-***
-
-## Step 4: Verify and finish
-
-After a successful purchase, you can confirm the details via the Recurly Admin UI or by calling Recurly’s API to list your new account, subscription, or invoice.
+After a successful verification and resume/reactivation, you can confirm the details via the Recurly Admin UI or by calling Recurly’s API to list your new account, subscription, or invoice.
 
 ***
 
