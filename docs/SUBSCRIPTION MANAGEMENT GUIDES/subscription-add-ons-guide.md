@@ -51,7 +51,7 @@ The attributes of a Subscription Add-On (quantity, unit\_amount, tiers, and reve
 
 Supplying both the `id` and `code` in the request will be treated as if only the `id` were passed.
 
-## Attach new add-ns
+## Attach new add-ons
 
 New Add-Ons can be attached to the Subscription by providing a Plan Add-On `code`. Additional customizations of the Plan Add-On attributes can also be supplied at the same time.
 
