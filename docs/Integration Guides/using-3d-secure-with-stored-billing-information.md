@@ -7,11 +7,13 @@ metadata:
 ---
 # Overview
 
-This guide shows you how to use the [Purchase endpoint](https://developers.recurly.com/api/latest/#tag/purchase) to create new accounts, add subscriptions or one-time charges, and securely capture payment details. We’ll also illustrate how to integrate [Recurly.js](https://developers.recurly.com/reference/recurly-js) for secure tokenization.
+This guide shows you how to use the Verification Endpoints to reverify card details already stored in Recurly prior to resuming or reactivating a subscription. We’ll also illustrate how to integrate [Recurly.js](https://developers.recurly.com/reference/recurly-js) for secure tokenization where required.
 
 ### Prerequisites & limitations
 
-* Familiarity with Recurly’s API and basic REST concepts
+* Familiarity with Recurly’s API and basic REST concepts including:
+  * Verify without CVV:  [Verify an account's credit card billing cvv](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info_cvv)
+  * Verify with CVV:  [Verify an account's credit card billing cvv](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info_cvv)
 * [Completed the Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [3DS integration guide](https://docs.recurly.com/v1.1/docs/3d-secure-20-integration-guide#/versions)
 * Conditional usage of [Recurly.js](https://developers.recurly.com/reference/recurly-js) depending on your supported gateway:
   * Cybersource and WorldPay gateways require use of Recurly.js to complete this integration guide
