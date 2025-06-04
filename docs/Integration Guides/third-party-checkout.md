@@ -21,6 +21,8 @@ metadata:
 > 📘 Important:
 >
 > The integrator must have a functioning implementation of Stripe Elements in place in order to effectively use this guide. See Stripe Elements documentation and Recurly Recommendations below to get started.
+>
+> Additionally, you do not need to integrate to Stripe's APIs for Payment or Setup Intents. You must send the ctoken to Recurly once you have it.
 
 For more information on the V3 API, see our [API Reference Hub](https://recurly.com/developers/api/).
 
