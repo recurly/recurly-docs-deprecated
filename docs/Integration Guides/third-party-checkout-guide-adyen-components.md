@@ -1,5 +1,5 @@
 ---
-title: 'Third-party checkout guide: Adyen components'
+title: 'Third-party checkout guide: Adyen Web Components'
 excerpt: >-
   A step-by-step reference for wiring up Adyen Web Components to Recurly via the
   V3 API and Recurly.js, enabling you to accept cards, wallets, and other
@@ -11,7 +11,7 @@ metadata:
 ---
 # Overview
 
-This guide walks you through how to connect your Adyen Components integration correctly to Recurly via the V3 API and Recurly.js. You’ll learn how to configure Adyen’s Web Components, tokenize payments with Recurly.js, and make purchase requests against the Recurly API.
+This guide walks you through how to connect your Adyen Web Components integration correctly to Recurly via the V3 API and Recurly.js. You’ll learn how to configure Adyen’s Web Components, tokenize payments with Recurly.js, and make purchase requests against the Recurly API.
 
 ### Prerequisites & limitations
 
