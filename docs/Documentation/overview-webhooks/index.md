@@ -12,7 +12,7 @@ metadata:
 
 Webhooks let you notify your internal systems and partner applications whenever something important happens in Recurly. Treat them as **alerts**—not as the sole source of truth—then follow the [Best Practices](https://docs.recurly.com/v1.3/docs/best-practices#/) section to act on those events safely.
 
-Recurly can post notifications to any publicly reachable server. When a qualifying event occurs (for example, a new account is created), Recurly sends a webhook to each endpoint you configure—up to **10 endpoints** per site. Every endpoint receives the notifications for the [lifecycle events](https://docs.recurly.com/v1.3/update/docs/lifecycle-events#/) it is subscribed to.
+Recurly can post notifications to any publicly reachable server. When a qualifying event occurs (for example, a new account is created), Recurly sends a webhook to each endpoint you configure—up to **10 endpoints** per site. Every endpoint receives the notifications for the [lifecycle events](https://docs.recurly.com/v1.3/docs/lifecycle-events#/) it is subscribed to.
 
 A notification counts as **delivered** only when Recurly gets a timely, successful response:
 
