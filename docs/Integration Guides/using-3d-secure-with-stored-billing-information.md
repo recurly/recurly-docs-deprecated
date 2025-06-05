@@ -12,7 +12,7 @@ This guide shows you how to use the Verification Endpoints to reverify card deta
 ### Prerequisites & limitations
 
 * Familiarity with Recurly’s API and basic REST concepts including:
-  * Verify without CVV:  [Verify an account's credit card billing cvv](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info_cvv)
+  * Verify without CVV:  [Verify an account's credit card billing info](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info)
   * Verify with CVV:  [Verify an account's credit card billing cvv](https://recurly.com/developers/api/v2021-02-25/index.html#operation/verify_billing_info_cvv)
 * [Completed the Quickstart Guide](https://docs.recurly.com/v1.1/docs/quick-start-guide#/) and [3DS integration guide](https://docs.recurly.com/v1.1/docs/3d-secure-20-integration-guide#/versions)
 * Conditional usage of [Recurly.js](https://developers.recurly.com/reference/recurly-js) depending on your supported gateway:
@@ -49,7 +49,12 @@ Use [Recurly.js](https://developers.recurly.com/reference/recurly-js/#getting-st
 
 **Note:** If you are using [Cybersource](https://docs.recurly.com/docs/cybersource#/) or [WorldPay](https://docs.recurly.com/docs/worldpaydlocal-latam-support#/), you will want to *start* this process with Recurly.js and pass in the billing info ID or account code to Recurly.js and pass in a `token_id` to one of the above two endpoints. This is because Cybersource and WorldPay require a data collector to capture consumer information for 3DS to function properly on those platforms.
 
+* For Cybersource and WorldPay, you'll need to configure your risk options to include a `billingInfoId`. If passing the CVV, tokenizing the cvv element will also be required.
+
 See more detailed information for supporting known billing infos in Recurly.js  in our development hub.
+
+* [CVV Element Tokenization](https://docs.recurly.com/v1.2/docs/elements)
+* [Billing Info ID Tokenization](https://docs.recurly.com/v1.2/docs/elements)
 
 ### Handling Re-verification and 3DS Authentication Failures
 
