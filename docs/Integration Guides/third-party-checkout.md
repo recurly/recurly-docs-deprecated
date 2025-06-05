@@ -297,9 +297,9 @@ If the purchase is successful, an `InvoiceCollection` will be returned as the re
 
 When using Klarna, Stripe will respond with the category of Klarna used for the subscription request. These three options will appear in API responses in the gateway\_params object.
 
-* Pay in Installments (pay\_in\_installments), meaning BNPL
-* Pay Now (pay\_now), where customers choose to pay immediately.
-* Pay Later (pay\_later), where customers choose to pay on their payday.
+* Pay in Installments (`pay_in_installments`), meaning BNPL
+* Pay Now (`pay_now`), where customers choose to pay immediately.
+* Pay Later (`pay_later`), where customers choose to pay on their payday.
 
 Related APMs: Klarna
 
