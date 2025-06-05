@@ -285,7 +285,7 @@ Certain payment methods require the Stripe business account holder to be located
 
 **Related Payment Methods:** BACS (UK), BECS (AU), Revolut (UK)
 
-**Direct Debit Support Note:** BACS do not support setup intents through the Payment Element, and therefore <u>cannot support Billing Information updates or Free Trial subscriptions using Stripe Elements where payment details are required</u>. To support Billing Information updates, subscriptions will need to be cancelled and set up again rather than using billing update features on Recurly. To support Trials using BACS, you may use trials that do not require payment data. Upon conversion, the customer will need to go through the Elements flow.
+**Direct Debit Support Note:** BACS does not support setup intents through the Payment Element, and therefore <u>cannot support Billing Information updates or Free Trial subscriptions using Stripe Elements where payment details are required</u>. To support Billing Information updates, subscriptions will need to be cancelled and set up again rather than using billing update features on Recurly. To support Trials using BACS, you may use trials that do not require payment data. Upon conversion, the customer will need to go through the Elements flow.
 
 ### Step 4: Process the purchase response
 
