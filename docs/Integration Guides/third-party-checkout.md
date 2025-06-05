@@ -26,7 +26,7 @@ metadata:
 
 For more information on the V3 API, see our [API Reference Hub](https://recurly.com/developers/api/).
 
-### Supported payment methods (Q1 Support)
+### Supported payment methods
 
 Recurly will be supporting Dynamic Payment Methods. To add payment methods to your integration and have them show up dynamically, request these payment methods in your Stripe Dashboard individually.
 
@@ -34,7 +34,7 @@ Recurly will be supporting Dynamic Payment Methods. To add payment methods to yo
 
 * **Wallets**: Link Pay, Cash App Pay, Revolut, Klarna (Pay Now / Later, BNPL)
 
-* **Direct Debit**: SEPA, ACH, BACS, BECS
+* **Direct Debit**: SEPA, ACH, BACS, BECS, iDeal
 
 ### Step 1: Build your Stripe Elements integration
 
@@ -44,6 +44,10 @@ You will want to follow Stripe Documentation to build out an integration to the 
 * Quickstart Guide: [Custom payment flow | Stripe Documentation](https://stripe.com/docs/payments/payment-element#custom-payment-flow)
 
 If you decide to use the Card Element instead of the Payment Element, you will be limited to accepting only Card payments and Link, and excluding Wallets such as Apple and Google Pay. Stripe’s Payment Element, however, will support cards and Link, plus the additional wallets and alternative payment method options supported by Recurly. For a simpler and more flexible setup, we recommend choosing the Payment Element.
+
+> 📘 Klarna Recurring is still in BETA / Preview at Stripe Gateway
+>
+> You will need to be enrolled in the BETA at Stripe to use this payment method with Payment Elements. Speak to your Stripe account manager about enrolling in the BETA with Recurly.
 
 ### Recommendations
 
@@ -87,6 +91,10 @@ Mode `setup` should be used when a customer wishes to sign up for a free trial s
 > * Not all payment methods support ‘setup’ mode (free trials or billing info updates).
 >
 > **Example:** BACS does not support ‘setup’ in Payment Elements.
+
+### Klarna Enablement in Elements
+
+To use Klarna Recurring with Stripe, you will need to include a header parameter with your Elements integration. Please reach out to Recurly Support for this parameter and ensure you are part of the Klarna BETA at Stripe. You must also enable Klarna on your Stripe Dashboard.
 
 ### Configuring capture method
 
