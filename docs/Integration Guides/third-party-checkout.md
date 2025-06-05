@@ -293,8 +293,6 @@ If the purchase was not successful, you’ll receive an error response indicatin
 
 If the purchase is successful, an `InvoiceCollection` will be returned as the response type. This object consists of any charge or credit invoices created during the purchase.
 
-<br />
-
 #### Klarna Usage
 
 When using Klarna, Stripe will respond with the category of Klarna used for the subscription request. These three options will appear in API responses in the gateway\_params object.
