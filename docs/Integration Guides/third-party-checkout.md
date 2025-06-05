@@ -293,6 +293,18 @@ If the purchase was not successful, you’ll receive an error response indicatin
 
 If the purchase is successful, an `InvoiceCollection` will be returned as the response type. This object consists of any charge or credit invoices created during the purchase.
 
+<br />
+
+#### Klarna Usage
+
+When using Klarna, Stripe will respond with the category of Klarna used for the subscription request. These three options will appear in API responses in the gateway\_params object.
+
+* Pay in Installments (pay\_in\_installments), meaning BNPL
+* Pay Now (pay\_now), where customers choose to pay immediately.
+* Pay Later (pay\_later), where customers choose to pay on their payday.
+
+Related APMs: Klarna
+
 ### Step 5: Verify and finish
 
 If the purchase was successful, you should now be able to access all associated objects that were created as a result. You can verify through the API or the admin console.
