@@ -63,42 +63,31 @@ threeDSecure.attach(document.querySelector('#my-auth-container'));
 
 ### Additional Configuration
 
-#### Preflights
+#### Pre-flight 3-D Secure authentication
 
-Some gateways such as World Pay and Cybersouce, have API calls as a part of\
-their device fingerprinting required for 3DS2. By default if you have
-Cybersource or World Pay configured in Recurly to handle 3DS2 transactions
-Recurly.js will make this API calls by default to ensure your implementation is
-properly handling 3DS2 challenges.
+Recurly.js will perform some pre-flight authentication steps prior to tokenization. If you use a compatible compatible\
+with this process, then this process occurs automatically.
 
-Below is an example of disabling this preflight fingerprinting for said gateways\
-above.
+This process can be prevented with the following configuration value:
 
 ```javascript
 recurly.configure({
   // ...
   risk: {
     threeDSecure: {
-      preflightDeviceDataCollector: false,
+      preflightDeviceDataCollector: false
     }
   }
   // ..
 });
 ```
 
-You may want to use the config above, if you are handling a transaction you are\
-confident will not be challenged. It is important to note, that if the issuing
-bank or gateway does request a challenge, you will not be able to handle the
-challenge if this configuration is in use.
-
 #### Proactive 3D-Secure
 
-You can take your customers through Strong Customer Authentication before their initial transaction to store their card details by enabling Proactive 3D-Secure.\
-This feature is currently available for the following gateways:
+Recurly.js can perform Strong Customer Authentication prior to an initial transaction. This feature is currently\
+available only if you are using a Braintree gateway.
 
-* Braintree
-
-Below is an example for enabling this feature.
+Enable proactive 3-D Secure with the following configuration:
 
 ```javascript
 recurly.configure({
@@ -107,7 +96,7 @@ recurly.configure({
     threeDSecure: {
       proactive: {
         enabled: true,
-        gatewayCode: "abc123",
+        gatewayCode: 'my-gateway-code',
         amount: 0.00
       },
     }
@@ -119,6 +108,8 @@ recurly.configure({
 With proactive 3D-Secure enabled, you will receive a `three_d_secure_proactive_action_token` when you\
 tokenize your billing information. This value can be passed in as an `actionTokenId` to the `threeDSecure`
 class to enable the Strong Customer Authentication flow.
+
+<br />
 
 ### Reference
 
